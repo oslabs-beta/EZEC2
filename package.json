@@ -11,11 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@babel/preset-env": "^7.25.8",
-    "@babel/preset-react": "^7.25.7",
-    "aws-sdk": "^2.1691.0",
-    "babel-loader": "^9.2.1",
     "@aws-sdk/client-ec2": "^3.669.0",
+    "aws-sdk": "^2.1691.0",
     "body-parser": "^1.20.3",
     "concurrently": "^9.0.1",
     "express": "^4.21.1",
