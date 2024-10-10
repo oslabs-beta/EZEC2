@@ -1,0 +1,29 @@
+{
+  "name": "ezec2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/server/server.js",
+    "dev": "webpack server --open",
+    "devc": "concurrently \"cross-env NODE_ENV=development webpack serve --open\" \"cross-env NODE_ENV=development nodemon src/server/server.js\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1691.0",
+    "concurrently": "^9.0.1",
+    "express": "^4.21.1",
+    "html-webpack-plugin": "^5.6.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7",
+    "cross-env": "^7.0.3",
+    "webpack": "^5.95.0"
+  }
+}
