@@ -12,6 +12,7 @@ app.use('/cloudwatch', (req, res) => {
 });
 
 app.use('*', (req, res) => {
+  console.log('hitting 404 message');
   return res.sendStatus(404);
 });
 

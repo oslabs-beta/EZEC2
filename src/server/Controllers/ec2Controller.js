@@ -40,7 +40,10 @@ ec2Controller.stopInstance = async (req, res, next) => {
   console.log('Stopping instance.');
   try {
     if (!req.body.instanceId) {
-      return next({ err: 'Instance ID required to stop instance', code: 400 });
+      return next({
+        message: { err: 'Instance ID required to stop instance' },
+        status: 400,
+      });
     }
 
     const instanceIdArray = [];
@@ -67,7 +70,10 @@ ec2Controller.startInstance = async (req, res, next) => {
   console.log('Starting instance.');
   try {
     if (!req.body.instanceId) {
-      return next({ err: 'Instance ID required to stop instance', code: 400 });
+      return next({
+        message: { err: 'Instance ID required to start instance' },
+        status: 400,
+      });
     }
 
     const instanceIdArray = [];
