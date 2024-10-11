@@ -15,19 +15,20 @@ ec2Controller.getInstanceDetails = async (req, res, next) => {
     const instanceDescriptionResponse = await client.send(
       instanceDescriptionCommand
     );
+    console.log(instanceDescriptionResponse.Reservations[0].Instances[0]);
     const instanceList = [];
 
-    for (
-      let i = 0;
-      i < instanceDescriptionResponse.Reservations[0].Instances.length;
-      i++
-    ) {
+    for (let i = 0; i < instanceDescriptionResponse.Reservations.length; i++) {
+      const currentInstance =
+        instanceDescriptionResponse.Reservations[i].Instances[0];
       instanceList.push({
-        instanceId:
-          instanceDescriptionResponse.Reservations[0].Instances[i].InstanceId,
-        state: instanceDescriptionResponse.Reservations[0].Instances[i].State,
+        instanceId: currentInstance.InstanceId,
+        state: currentInstance.State,
+        tags: currentInstance.Tags,
+        securityGroups: currentInstance.SecurityGroups,
       });
     }
+
     res.locals.instanceList = instanceList;
     return next();
   } catch (e) {
