@@ -29,9 +29,13 @@ const InstanceContainer = () => {
   const createCards = () => {
     const cards = [];
     for (let i = 0; i < instanceDetails.length; i++) {
+      const nameTag = instanceDetails[i].tags.find((tag) => tag.Key === 'Name');
+      const name = nameTag ? nameTag.Value : 'Unnamed Instance';
+      console.log('instanceContainer', name);
       cards.push(
         <InstanceCard
           key={instanceDetails[i].instanceId}
+          name={name}
           {...instanceDetails[i]}
         />
       );
