@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const ec2Router = require('./routes/ec2Route.js');
+const ec2Router = require('./Routes/ec2Route.js');
 
 app.use(express.json());
 
