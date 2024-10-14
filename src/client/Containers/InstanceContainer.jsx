@@ -1,11 +1,8 @@
-import React from 'react'
+import React from 'react';
 import { useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 import InstanceCard from '../Components/InstanceCard.jsx';
-
-// fill it with as many instance cards as we have instances
-// so we need an array of our instances, and then render the array
-// need to retrieve list of instances from the backend, then for each instance, create an instance card passing in necessary info as props
 
 // regardless of page, we will always be fetching the array of instances
 // based on the page, we want to pass in different props to our instance cards
@@ -15,16 +12,48 @@ import InstanceCard from '../Components/InstanceCard.jsx';
 
 // IntanceContainer renders from OverviewManagementPage
 const InstanceContainer = () => {
-  // fetch array of instances from backend
-  // for each instance in array, create an instance card passing in appropriate props.
+  let [instanceDetails, setInstanceDetails] = useState(null);
+  let [instanceCards, setInstanceCards] = useState(null);
+  console.log(instanceDetails);
+
+  const fetchDetails = async () => {
+    try {
+      const response = await fetch('/ec2/getInstanceDetails');
+      const data = await response.json();
+      setInstanceDetails(data.instanceList);
+    } catch (e) {
+      console.log('Error fetching instance details: ', e);
+    }
+  };
+
+  const createCards = () => {
+    const cards = [];
+    for (let i = 0; i < instanceDetails.length; i++) {
+      const nameTag = instanceDetails[i].tags.find((tag) => tag.Key === 'Name');
+      const name = nameTag ? nameTag.Value : 'Unnamed Instance';
+      console.log('instanceContainer', name);
+      cards.push(
+        <InstanceCard
+          key={instanceDetails[i].instanceId}
+          name={name}
+          {...instanceDetails[i]}
+        />
+      );
+    }
+    setInstanceCards(cards);
+  };
+
+  useEffect(() => {
+    if (!instanceDetails) fetchDetails();
+    if (!!instanceDetails && !instanceCards) createCards();
+  }, [instanceDetails, instanceCards]);
 
   return (
     <div>
-    <div>InstanceContainer</div>
-    <InstanceCard />
-    {/* {instance cards} */}
+      <div>InstanceContainer</div>
+      {instanceCards}
     </div>
-  )
-}
+  );
+};
 
-export default InstanceContainer
+export default InstanceContainer;
