@@ -10,7 +10,8 @@ import { useQuery } from '@tanstack/react-query';
 const UsageMetricsLineChart = ({ instanceId }) => {
   let metricsData;
   let timeData;
-  let instanceIdParameter = !instanceId ? 'i-0493c32ad2245cd52' : instanceId;
+  // variable for dev only. instanceId should be populated via prop and used to retrieve usage data
+  let instanceIdParameter = !instanceId ? '' : instanceId;
 
   const { isPending, error, data } = useQuery({
     queryKey: ['metricData'],

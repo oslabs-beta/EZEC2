@@ -23,7 +23,7 @@ cloudwatchController.getUsageData = async (req, res, next) => {
               MetricName: 'CPUUtilization',
               Dimensions: [
                 {
-                  Name: 'InstanceId', // required "InstanceId", "i-0493c32ad2245cd52"
+                  Name: 'InstanceId', // required
                   Value: instanceId, // required
                 },
               ],
