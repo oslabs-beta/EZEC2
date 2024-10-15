@@ -12,7 +12,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@aws-sdk/client-ec2": "^3.669.0",
     "aws-sdk": "^2.1691.0",
     "body-parser": "^1.20.3",
     "@aws-sdk/client-cloudwatch": "^3.670.0",
