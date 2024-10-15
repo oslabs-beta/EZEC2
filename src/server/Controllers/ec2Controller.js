@@ -3,7 +3,7 @@ const { fromSSO } = require('@aws-sdk/credential-provider-sso');
 
 const client = new aws.EC2Client({
   region: 'us-east-1',
-  // credentials: fromSSO({ profile: '' }),
+  credentials: fromSSO({ profile: 'ec2-manager-908027414612' }),
 }); // Add config variables
 const ec2Controller = {};
 

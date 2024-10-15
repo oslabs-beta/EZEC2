@@ -37,8 +37,8 @@ const InstanceCard = ({ instanceId, state, tags, name }) => {
 
   return (
     <div>
-      <div className='instance-name'>{name}</div>
-      <div className='instance-id'>{instanceId}</div>
+      <div>{name}</div>
+      <div>{instanceId}</div>
       <button onClick={() => handleStop()}>Stop Instance</button>
       <button onClick={() => handleStart()}>Start Instance</button>
     </div>
