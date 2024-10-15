@@ -1,11 +1,8 @@
-import React from 'react'
-
+import React from 'react';
 
 // InstanceMetricsPage renders from PageContainer
 const InstanceMetricsPage = () => {
-  return (
-    <div>Instance Metrics Page</div>
-  )
-}
+  return <div>Instance Metrics Page</div>;
+};
 
-export default InstanceMetricsPage
+export default InstanceMetricsPage;

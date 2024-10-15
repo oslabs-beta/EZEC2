@@ -2,14 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const ec2Router = require('./routes/ec2Route.js');
+const cloudwatchRouter = require('./Routes/cloudwatchRoute.js');
 
 app.use(express.json());
 
 app.use('/ec2', ec2Router);
 
-app.use('/cloudwatch', (req, res) => {
-  return res.status(200);
-});
+app.use('/cloudwatch', cloudwatchRouter);
 
 app.use('*', (req, res) => {
   console.log('hitting 404 message');
