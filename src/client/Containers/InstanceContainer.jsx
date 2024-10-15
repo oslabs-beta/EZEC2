@@ -50,7 +50,6 @@ const InstanceContainer = () => {
 
   return (
     <div>
-      <div>InstanceContainer</div>
       {instanceCards}
     </div>
   );

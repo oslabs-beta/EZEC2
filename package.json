@@ -6,12 +6,13 @@
   "scripts": {
     "start": "nodemon src/server/server.js",
     "dev": "webpack server --open",
-    "devc": "concurrently \"cross-env NODE_ENV=development webpack serve --open\" \"cross-env NODE_ENV=development nodemon src/server/server.js\""
+    "devc": "concurrently \"cross-env NODE_ENV=development webpack serve --open\" \"cross-env NODE_ENV=development nodemon src/server/server.js\"",
+    "build": "webpack"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@aws-sdk/client-ec2": "^3.669.0",
+    "aws-sdk": "^2.1691.0",
     "body-parser": "^1.20.3",
     "@aws-sdk/client-cloudwatch": "^3.670.0",
     "@aws-sdk/client-ec2": "^3.669.0",
@@ -25,18 +26,28 @@
     "aws-sdk": "^2.1691.0",
     "babel-loader": "^9.2.1",
     "concurrently": "^9.0.1",
+    "css-loader": "^7.1.2",
     "express": "^4.21.1",
     "html-webpack-plugin": "^5.6.0",
     "mui": "^0.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^5.1.0"
+    "style-loader": "^4.0.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.25.8",
+    "@babel/preset-react": "^7.25.7",
+    "autoprefixer": "^10.4.20",
+    "babel-loader": "^9.2.1",
+    "concurrently": "^9.0.1",
     "cross-env": "^7.0.3",
     "nodemon": "^3.1.7",
-    "webpack": "^5.95.0"
+    "postcss": "^8.4.47",
+    "postcss-loader": "^8.1.1",
+    "tailwindcss": "^3.4.13",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0"
   }
 }
