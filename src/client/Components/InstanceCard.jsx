@@ -1,15 +1,9 @@
+import { DnsNameState } from '@aws-sdk/client-ec2';
 import React from 'react';
 
 // InstanceCard renders from InstanceContainer
-const InstanceCard = () => {
-  // write two onclick functions, one sending a request to the backend to stop an instance, one to start it
-  // stop: /ec2/stopInstance
-  // start: /ec2/startInstance
-
-  const instanceId = ''; // add instance id here
-
+const InstanceCard = ({ instanceId, state, tags, name }) => {
   function handleStop() {
-    // need instance id
     const data = {
       instanceId: instanceId,
     };
@@ -43,7 +37,8 @@ const InstanceCard = () => {
 
   return (
     <div>
-      <div>InstanceCard</div>
+      <div className='instance-name'>{name}</div>
+      <div className='instance-id'>{instanceId}</div>
       <button onClick={() => handleStop()}>Stop Instance</button>
       <button onClick={() => handleStart()}>Start Instance</button>
     </div>
