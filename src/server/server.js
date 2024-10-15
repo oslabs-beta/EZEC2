@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const ec2Router = require('./routes/ec2Route.js');
-const cloudwatchRouter = require('./Routes/cloudwatchRoute.js');
+const cloudwatchRouter = require('./routes/cloudwatchRoute.js');
 
 app.use(express.json());
 

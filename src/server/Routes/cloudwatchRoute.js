@@ -1,5 +1,5 @@
 const express = require('express');
-const cloudwatchController = require('../Controllers/cloudwatchController');
+const cloudwatchController = require('../controllers/cloudwatchController');
 
 const router = express.Router();
 
