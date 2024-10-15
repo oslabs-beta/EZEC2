@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 import InstanceBar from '../Components/InstanceBar.jsx';
 import PageContainer from './PageContainer.jsx';
@@ -11,7 +11,7 @@ const SubContainer = () => {
       <InstanceBar />
       <PageContainer />
     </div>
-  )
-}
+  );
+};
 
-export default SubContainer
+export default SubContainer;

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import UsageMetricsLineChart from '../Components/UsageMetricsLineChart.jsx';
 import SearchBar from '../Components/SearchBar.jsx';
 import SubContainer from './SubContainer.jsx';
 
@@ -13,6 +13,7 @@ const MainContainer = () => {
       <div>MainContainer</div>
       <SearchBar />
       <SubContainer />
+      <UsageMetricsLineChart />
     </div>
   );
 };
