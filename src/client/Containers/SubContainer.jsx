@@ -1,14 +1,13 @@
 import React from 'react';
 
-import InstanceBar from '../Components/InstanceBar.jsx';
 import PageContainer from './PageContainer.jsx';
+import SearchBar from '../Components/SearchBar.jsx';
 
 // SubContainer renders from MainContainer
 const SubContainer = () => {
   return (
-    <div>
-      <div>SubContainer</div>
-      <InstanceBar />
+    <div id='SubContainer' className='flex flex-col flex-1 w-full'>
+      <SearchBar />
       <PageContainer />
     </div>
   );

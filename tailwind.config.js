@@ -2,7 +2,14 @@
 module.exports = {
   content: ['./src/client/**/*.{html,js,jsx,ts,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        discord: {
+          100: '#dcddde', // the text color
+          900: '#36393f', // the midnight background
+        },
+      },
+    },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/forms')],
 };

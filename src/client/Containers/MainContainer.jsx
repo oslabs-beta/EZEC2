@@ -1,7 +1,8 @@
 import React from 'react';
+
 import UsageMetricsLineChart from '../Components/UsageMetricsLineChart.jsx';
-import SearchBar from '../Components/SearchBar.jsx';
 import SubContainer from './SubContainer.jsx';
+import InstanceBar from '../Components/InstanceBar.jsx';
 
 // search bar
 // sub container
@@ -9,11 +10,10 @@ import SubContainer from './SubContainer.jsx';
 // MainContainer renders from App
 const MainContainer = () => {
   return (
-    <div>
-      <div>MainContainer</div>
-      <SearchBar />
+    <div id='MainContainer' className='flex h-screen bg-gray-50 dark:bg-gray-900 false' >
+      <InstanceBar />
       <SubContainer />
-      <UsageMetricsLineChart />
+      {/* <UsageMetricsLineChart /> */}
     </div>
   );
 };
