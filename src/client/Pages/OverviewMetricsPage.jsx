@@ -7,7 +7,6 @@ import InstanceContainer from '../Containers/InstanceContainer';
 const OverviewMetricsPage = () => {
   return (
     <div className='h-full overflow-y-auto'>
-      <div>Overview Metrics Page</div>
       <OverviewMetrics />
       <InstanceContainer />
     </div>

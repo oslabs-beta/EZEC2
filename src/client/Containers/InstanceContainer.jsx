@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import InstanceCard from '../Components/InstanceCard.jsx';
+import Tables from '../Components/Tables.jsx';
 
 // regardless of page, we will always be fetching the array of instances
 // based on the page, we want to pass in different props to our instance cards
@@ -48,7 +49,11 @@ const InstanceContainer = () => {
     if (!!instanceDetails && !instanceCards) createCards();
   }, [instanceDetails, instanceCards]);
 
-  return <div>{instanceCards}</div>;
+  return (
+    <div className='grid gap-6 mb-8 md:grid-cols-2'>
+      <div>{instanceCards}</div>
+    </div>
+  );
 };
 
 export default InstanceContainer;

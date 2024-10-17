@@ -1,4 +1,5 @@
 const aws = require('@aws-sdk/client-cloudwatch');
+const { fromSSO } = require('@aws-sdk/credential-provider-sso');
 
 const cloudwatchController = {};
 
@@ -11,7 +12,10 @@ cloudwatchController.getUsageData = async (req, res, next) => {
   const instanceId = req.params.instanceId;
 
   try {
-    const client = new aws.CloudWatchClient({ region: 'us-east-1' });
+    const client = new aws.CloudWatchClient({
+      region: 'us-east-1',
+      credentials: fromSSO({ profile: 'ec2-manager-908027414612' }),
+    });
     const input = {
       // GetMetricDataInput
       MetricDataQueries: [
@@ -43,7 +47,7 @@ cloudwatchController.getUsageData = async (req, res, next) => {
     const command = new aws.GetMetricDataCommand(input);
 
     const response = await client.send(command);
-    console.log(response);
+    // console.log(response);
     res.locals = response;
     return next();
   } catch (e) {

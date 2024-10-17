@@ -1,11 +1,17 @@
 const aws = require('@aws-sdk/client-ec2');
+const { fromSSO } = require('@aws-sdk/credential-provider-sso');
 
 const client = new aws.EC2Client({
   region: 'us-east-1',
+  // credentials: fromSSO({ profile: '' }),
 }); // Add config variables
+
+// const client = new aws.EC2Client({
+//   region: 'us-east-1',
+// }); // Add config variables
 const ec2Controller = {};
 ec2Controller.getInstanceDetails = async (req, res, next) => {
-  console.log('Getting instance details.');
+  console.log('Getting all instance details.');
   try {
     const instanceDescriptionCommand = new aws.DescribeInstancesCommand({
       DryRun: false,
@@ -13,7 +19,7 @@ ec2Controller.getInstanceDetails = async (req, res, next) => {
     const instanceDescriptionResponse = await client.send(
       instanceDescriptionCommand
     );
-    console.log(instanceDescriptionResponse);
+    // console.log(instanceDescriptionResponse);
     const instanceList = [];
 
     for (let i = 0; i < instanceDescriptionResponse.Reservations.length; i++) {
@@ -71,6 +77,7 @@ ec2Controller.stopInstance = async (req, res, next) => {
 
     return next();
   } catch (e) {
+    console.log(e);
     return next({
       status: 401,
       message: { err: e.toString() },

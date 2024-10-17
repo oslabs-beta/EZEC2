@@ -14,7 +14,6 @@ import InstanceMetricsPage from '../Pages/InstanceMetricsPage';
 const PageContainer = () => {
   return (
     <BrowserRouter>
-    <div>PageContainer</div>
     <PageTabs />
     <Routes>
         <Route path='/' element={<OverviewMetricsPage/>}></Route>
