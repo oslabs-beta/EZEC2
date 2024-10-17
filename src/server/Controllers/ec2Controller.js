@@ -1,9 +1,10 @@
 const aws = require('@aws-sdk/client-ec2');
 const { fromSSO } = require('@aws-sdk/credential-provider-sso');
+require('dotenv').config();
 
 const client = new aws.EC2Client({
   region: 'us-east-1',
-  // credentials: fromSSO({ profile: '' }),
+  // credentials: fromSSO({ profile: process.env.PROFILE }),
 }); // Add config variables
 
 // const client = new aws.EC2Client({

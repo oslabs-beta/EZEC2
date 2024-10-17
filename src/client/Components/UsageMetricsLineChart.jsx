@@ -14,9 +14,12 @@ const UsageMetricsLineChart = ({ instanceId }) => {
   console.log('UsageMetricsLineChart', instanceId);
 
   const { isPending, error, data } = useQuery({
-    queryKey: ['metricData'],
-    queryFn: () =>
-      fetch('/cloudwatch/getUsageData/' + instanceId).then((res) => res.json()),
+    queryKey: ['metricData' + instanceId],
+    queryFn: async () => {
+      return await fetch('/cloudwatch/getUsageData/' + instanceId).then((res) =>
+        res.json()
+      );
+    },
   });
 
   if (isPending) return 'Loading...';
