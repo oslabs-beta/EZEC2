@@ -1,46 +1,16 @@
 import { DnsNameState } from '@aws-sdk/client-ec2';
 import React from 'react';
 
+import UsageMetricsLineChart from './UsageMetricsLineChart';
+
 // InstanceCard renders from InstanceContainer
-const InstanceCard = ({ instanceId, state, tags, name }) => {
-  function handleStop() {
-    const data = {
-      instanceId: instanceId,
-    };
-
-    fetch('/ec2/stopInstance', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-  }
-
-  function handleStart() {
-    const data = {
-      instanceId: instanceId,
-    };
-
-    fetch('/ec2/startInstance', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-  }
-
+const InstanceCard = ({ instanceId, name }) => {
   return (
     <div>
-      <div>{name}</div>
-      <div>{instanceId}</div>
-      <button onClick={() => handleStop()}>Stop Instance</button>
-      <button onClick={() => handleStart()}>Start Instance</button>
+      <h3>{name}</h3>
+      <h3>{instanceId}</h3>
+      <h4>CPU Utilization</h4>
+      <UsageMetricsLineChart instanceId={instanceId} />
     </div>
   );
 };

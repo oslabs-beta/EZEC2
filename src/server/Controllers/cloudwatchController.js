@@ -28,26 +28,17 @@ cloudwatchController.getUsageData = async (req, res, next) => {
                 },
               ],
             },
-            Period: 300, // required
+            Period: 900, // required
             Stat: 'Average', // required
             Unit: 'Percent',
           },
-          //   Expression: 'STRING_VALUE',
-          //   Label: 'STRING_VALUE',
           ReturnData: true,
-          //   Period: 300,
-          //   AccountId: 'STRING_VALUE',
         },
       ],
       StartTime: yesterday, // required
       EndTime: now, // required
-      //   NextToken: 'STRING_VALUE',
       ScanBy: 'TimestampAscending',
-      //   MaxDatapoints: Number('int'),
-      //   LabelOptions: {
-      //     // LabelOptions
-      //     Timezone: 'Timezone Label Option',
-      //   },
+      // MaxDatapoints: Number('int'),
     };
     const command = new aws.GetMetricDataCommand(input);
 

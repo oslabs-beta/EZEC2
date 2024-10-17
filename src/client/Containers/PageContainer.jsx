@@ -17,6 +17,7 @@ const PageContainer = () => {
     <div>PageContainer</div>
     <PageTabs />
     <Routes>
+        <Route path='/' element={<OverviewMetricsPage/>}></Route>
         <Route path='/overview/management' element={<OverviewManagementPage />}></Route>
         <Route path='/overview/metrics' element={<OverviewMetricsPage/>}></Route>
         <Route path='/instance/usage-metrics' element={<InstanceMetricsPage/>}></Route>

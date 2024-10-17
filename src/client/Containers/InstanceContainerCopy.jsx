@@ -36,7 +36,7 @@ const InstanceContainer = () => {
         <InstanceCard
           key={instanceDetails[i].instanceId}
           name={name}
-          instanceId={instanceDetails[i].instanceId}
+          {...instanceDetails[i]}
         />
       );
     }
@@ -48,7 +48,9 @@ const InstanceContainer = () => {
     if (!!instanceDetails && !instanceCards) createCards();
   }, [instanceDetails, instanceCards]);
 
-  return <div>{instanceCards}</div>;
+  return (
+    <div>
+      {instanceCards}
+    </div>
+  );
 };
-
-export default InstanceContainer;
