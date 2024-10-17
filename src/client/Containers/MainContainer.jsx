@@ -10,7 +10,7 @@ import InstanceBar from '../Components/InstanceBar.jsx';
 // MainContainer renders from App
 const MainContainer = () => {
   return (
-    <div id='MainContainer' className='flex h-screen bg-gray-50 dark:bg-gray-900 false' >
+    <div id='MainContainer' className='flex h-screen bg-templateGray-50 dark:bg-templateGray-900 false' >
       <InstanceBar />
       <SubContainer />
       {/* <UsageMetricsLineChart /> */}
