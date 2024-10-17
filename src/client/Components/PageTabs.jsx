@@ -6,10 +6,9 @@ const PageTabs = () => {
   // remove instance metrics Link in the future. Only here for development purposes
   return (
     <div>
-      <div>PageTabs</div>
       <Link to='/overview/management'>Overview: Management</Link>
       <Link to='/overview/metrics'>Overview: Metrics</Link>
-      <Link to='/instance/usage-metrics'>Dev Tab: Instance Metrics</Link>
+      {/* <Link to='/instance/usage-metrics'>Dev Tab: Instance Metrics</Link> */}
     </div>
   );
 };

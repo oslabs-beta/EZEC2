@@ -4,7 +4,7 @@ import React from 'react'
 // OverviewMetrics renders from OverviewMetricsPage
 const OverviewMetrics = () => {
   return (
-    <div>OverviewMetrics</div>
+    <div>(Insert Overview Metrics Here)</div>
   )
 }
 
