@@ -154,7 +154,7 @@ function Tables({ instanceList }) {
           <TableHeader>
             <tr>
               <TableCell>Instance</TableCell>
-              <TableCell>ID? (or other data?)</TableCell>
+              <TableCell>ID</TableCell>
               <TableCell>Status</TableCell>
               <TableCell>Action</TableCell>
             </tr>
