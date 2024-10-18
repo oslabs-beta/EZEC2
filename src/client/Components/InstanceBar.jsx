@@ -3,14 +3,14 @@ import React from 'react';
 // InstanceBar renders from SubContainer
 const InstanceBar = () => {
   return (
-    <aside className='z-30 flex-shrink-0 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 lg:block'>
-      <div className='py-4 text-gray-500 dark:text-gray-400'>
-        <a className='ml-6 text-lg font-bold text-gray-800 dark:text-gray-200'>EZEC2 ~Danny placeholder~</a>
+    <aside className='z-30 flex-shrink-0 hidden w-64 overflow-y-auto bg-white dark:bg-templateGray-800 lg:block'>
+      <div className='py-4 text-templateGray-500 dark:text-templateGray-400'>
+        <a className='ml-6 text-lg font-bold text-templateGray-800 dark:text-templateGray-200'>EZEC2 ~Danny placeholder~</a>
         <ul className='mt-6'>
           {/* Should swap to component here: */}
           <li className='relative px-6 py-3'>
-            <a className='inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 text-gray-800 dark:text-gray-100'>
-              <span className='absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg'></span>
+            <a className='inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-templateGray-800 dark:hover:text-templateGray-200 text-templateGray-800 dark:text-templateGray-100'>
+              <span className='absolute inset-y-0 left-0 w-1 bg-templatePurple-600 rounded-tr-lg rounded-br-lg'></span>
               <svg
                 fill='none'
                 strokeLinecap='round'
@@ -29,7 +29,7 @@ const InstanceBar = () => {
           {/* End of new component */}
           {/* placeholder side bar buttons: */}
           <li className='relative px-6 py-3'>
-            <a className='inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 text-gray-800 dark:text-gray-100'>
+            <a className='inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-templateGray-800 dark:hover:text-templateGray-200 text-templateGray-800 dark:text-templateGray-100'>
               <svg
                 fill='none'
                 strokeLinecap='round'
@@ -46,7 +46,7 @@ const InstanceBar = () => {
             </a>
           </li>
           <li className='relative px-6 py-3'>
-            <a className='inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 text-gray-800 dark:text-gray-100'>
+            <a className='inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-templateGray-800 dark:hover:text-templateGray-200 text-templateGray-800 dark:text-templateGray-100'>
               <svg
                 fill='none'
                 strokeLinecap='round'
@@ -63,7 +63,7 @@ const InstanceBar = () => {
             </a>
           </li>
           <li className='relative px-6 py-3'>
-            <a className='inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 text-gray-800 dark:text-gray-100'>
+            <a className='inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-templateGray-800 dark:hover:text-templateGray-200 text-templateGray-800 dark:text-templateGray-100'>
               <svg
                 fill='none'
                 strokeLinecap='round'
