@@ -64,7 +64,7 @@ function Tables({ instanceList }) {
 
   function handleStop(instanceIds) {
     if (!Array.isArray(instanceIds)) {
-        instanceIds = [instanceIds];
+      instanceIds = [instanceIds];
     }
     const data = {
       instanceIds: instanceIds,
@@ -83,7 +83,7 @@ function Tables({ instanceList }) {
 
   function handleStart(instanceIds) {
     if (!Array.isArray(instanceIds)) {
-        instanceIds = [instanceIds];
+      instanceIds = [instanceIds];
     }
     const data = {
       instanceIds: instanceIds,
@@ -154,7 +154,7 @@ function Tables({ instanceList }) {
           <TableHeader>
             <tr>
               <TableCell>Instance</TableCell>
-              <TableCell>ID? (or other data?)</TableCell>
+              <TableCell>ID</TableCell>
               <TableCell>Status</TableCell>
               <TableCell>Action</TableCell>
             </tr>
