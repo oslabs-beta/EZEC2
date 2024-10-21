@@ -10,7 +10,7 @@ const InstanceCard = ({ instanceId, name, chartColor }) => {
     <div className='min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-templateGray-800'>
       <h3>{name}</h3>
       <h3>{instanceId}</h3>
-      <UsageMetricsLineChart instanceId={instanceId} />
+      <UsageMetricsLineChart instanceId={instanceId} chartColor={chartColor} />
     </div>
   );
 };
