@@ -152,14 +152,14 @@ function Tables({ instanceList }) {
       <TableContainer className='mb-8 dark:bg-templateGray-800'>
         <Table>
           <TableHeader>
-            <tr className='text-xs font-semibold tracking-wide text-left text-templateGray-500 uppercase border-b bg-templateGray-50 dark:border-templateGray-500 dark:text-templateGray-400 dark:bg-templateGray-800'>
+            <tr className='text-xs font-semibold tracking-wide text-left text-templateGray-500 uppercase border-b bg-templateGray-50 dark:border-templateGray-600 dark:text-templateGray-400 dark:bg-templateGray-800'>
               <TableCell>Instance</TableCell>
               <TableCell>ID</TableCell>
               <TableCell>Status</TableCell>
               <TableCell>Action</TableCell>
             </tr>
           </TableHeader>
-          <TableBody className='dark:bg-templateGray-800 divide-y dark:dividetemplateGgray-700 text-templateGray-700 dark:text-templateGray-400 dark:border-templateGray-700'>
+          <TableBody className='dark:bg-templateGray-800 divide-y dark:divide-templateGray-700 text-templateGray-700 dark:text-templateGray-400 dark:border-templateGray-700'>
             {instanceList.map((instance, i) => {
               const nameTag = instance.tags.find((tag) => tag.Key === 'Name');
               return (
