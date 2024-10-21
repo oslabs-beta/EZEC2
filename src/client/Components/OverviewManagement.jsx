@@ -1,11 +1,8 @@
-import React from 'react'
-
+import React from 'react';
 
 // OverviewManagement renders from OverviewManagementPage
 const OverviewManagement = () => {
-  return (
-    <div>OverviewManagement</div>
-  )
-}
+  return <div>{/* <div>OverviewManagement</div> */}</div>;
+};
 
-export default OverviewManagement
+export default OverviewManagement;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
 import UsageMetricsLineChart from '../Components/UsageMetricsLineChart.jsx';
 import SubContainer from './SubContainer.jsx';
@@ -10,11 +11,16 @@ import InstanceBar from '../Components/InstanceBar.jsx';
 // MainContainer renders from App
 const MainContainer = () => {
   return (
-    <div id='MainContainer' className='flex h-screen bg-templateGray-50 dark:bg-templateGray-900 false' >
-      <InstanceBar />
-      <SubContainer />
-      {/* <UsageMetricsLineChart /> */}
-    </div>
+    <BrowserRouter>
+      <div
+        id='MainContainer'
+        className='flex h-screen bg-templateGray-50 dark:bg-templateGray-900 false'
+      >
+        <InstanceBar />
+        <SubContainer />
+        {/* <UsageMetricsLineChart /> */}
+      </div>
+    </BrowserRouter>
   );
 };
 

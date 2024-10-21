@@ -4,7 +4,7 @@ require('dotenv').config();
 
 const client = new aws.EC2Client({
   region: 'us-east-1',
-  // credentials: fromSSO({ profile: process.env.PROFILE }),
+  credentials: fromSSO({ profile: process.env.PROFILE }),
 }); // Add config variables
 
 // const client = new aws.EC2Client({
