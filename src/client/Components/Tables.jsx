@@ -44,7 +44,7 @@ const buttonStyles = {
 };
 
 // original button styling
-// 'align-bottom inline-flex items-center justify-center cursor-pointer leading-5 transition-colors duration-150 font-medium focus:outline-none px-4 py-2 rounded-lg text-sm text-templateGray-600 border-templateGray-300 border dark:text-templateGray-400 focus:outline-none active:bg-transparent hover:border-templateGray-500 focus:border-templateGray-500 active:text-templateGray-500 focus:shadow-outline-gray'
+// 'align-bottom inline-flex items-center justify-center cursor-pointer leading-5 transition-colors duration-150 font-medium focus:outline-none px-4 py-2 rounded-lg text-sm text-gray-600 border-gray-300 border dark:text-gray-400 focus:outline-none active:bg-transparent hover:border-gray-500 focus:border-gray-500 active:text-gray-500 focus:shadow-outline-gray'
 
 // import response from '../utils/demo/tableData';
 // make a copy of the data, for the second table
@@ -64,7 +64,7 @@ function Tables({ instanceList }) {
 
   function handleStop(instanceIds) {
     if (!Array.isArray(instanceIds)) {
-        instanceIds = [instanceIds];
+      instanceIds = [instanceIds];
     }
     const data = {
       instanceIds: instanceIds,
@@ -83,7 +83,7 @@ function Tables({ instanceList }) {
 
   function handleStart(instanceIds) {
     if (!Array.isArray(instanceIds)) {
-        instanceIds = [instanceIds];
+      instanceIds = [instanceIds];
     }
     const data = {
       instanceIds: instanceIds,
@@ -149,17 +149,17 @@ function Tables({ instanceList }) {
       {/* <PageTitle>Tables</PageTitle> */}
 
       {/* <SectionTitle>Simple table</SectionTitle> */}
-      <TableContainer className='mb-8'>
+      <TableContainer className='mb-8 dark:bg-templateGray-800'>
         <Table>
           <TableHeader>
-            <tr>
+            <tr className='text-xs font-semibold tracking-wide text-left text-templateGray-500 uppercase border-b bg-templateGray-50 dark:border-templateGray-500 dark:text-templateGray-400 dark:bg-templateGray-800'>
               <TableCell>Instance</TableCell>
               <TableCell>ID</TableCell>
               <TableCell>Status</TableCell>
               <TableCell>Action</TableCell>
             </tr>
           </TableHeader>
-          <TableBody>
+          <TableBody className='dark:bg-templateGray-800 divide-y dark:dividetemplateGgray-700 text-templateGray-700 dark:text-templateGray-400 dark:border-templateGray-700'>
             {instanceList.map((instance, i) => {
               const nameTag = instance.tags.find((tag) => tag.Key === 'Name');
               return (
@@ -168,7 +168,7 @@ function Tables({ instanceList }) {
                     <div className='flex items-center text-sm'>
                       <div>
                         <p className='font-semibold'>{nameTag.Value}</p>
-                        {/* <p className='text-xs text-templateGray-600 dark:text-templateGray-400'>
+                        {/* <p className='text-xs text-gray-600 dark:text-gray-400'>
                           {instance.instanceId}
                         </p> */}
                       </div>
@@ -189,7 +189,7 @@ function Tables({ instanceList }) {
                   </TableCell>
                   <TableCell>
                     {/* <button
-                      className='align-bottom inline-flex items-center justify-center cursor-pointer leading-5 transition-colors duration-150 font-medium focus:outline-none px-4 py-2 rounded-lg text-sm text-templateGray-600 border-templateRed-700 border dark:text-templateGray-400 focus:outline-none active:bg-transparent hover:border-templateRed-500 focus:border-templateRed-500 active:text-templateGray-500 focus:shadow-outline-gray'
+                      className='align-bottom inline-flex items-center justify-center cursor-pointer leading-5 transition-colors duration-150 font-medium focus:outline-none px-4 py-2 rounded-lg text-sm text-gray-600 border-red-700 border dark:text-gray-400 focus:outline-none active:bg-transparent hover:border-red-500 focus:border-red-500 active:text-gray-500 focus:shadow-outline-gray'
                       type='button'
                     >
                       Stop Instance
@@ -222,7 +222,7 @@ function Tables({ instanceList }) {
             })}
           </TableBody>
         </Table>
-        <TableFooter>
+        <TableFooter className='dark:bg-templateGray-800 border-t dark:border-templateGray-600'>
           {/* <Pagination
             totalResults={totalResults}
             resultsPerPage={resultsPerPage}

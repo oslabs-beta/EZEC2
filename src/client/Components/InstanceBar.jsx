@@ -7,10 +7,10 @@ const InstanceBar = () => {
   const location = useLocation();
 
   return (
-    <aside className='z-30 flex-shrink-0 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 lg:block'>
-      <div className='py-4 text-gray-500 dark:text-gray-400'>
-        <a className='ml-6 text-lg font-bold text-gray-800 dark:text-gray-200'>
-          EZEC2 
+    <aside className='z-30 flex-shrink-0 hidden w-64 overflow-y-auto bg-white dark:bg-templateGray-800 lg:block'>
+      <div className='py-4 text-templateGray-500 dark:text-templateGray-400'>
+        <a className='ml-6 text-lg font-bold text-templateGray-800 dark:text-templateGray-200'>
+          EZEC2
           {/* ~Danny placeholder~ */}
         </a>
         <ul className='mt-6'>
@@ -18,11 +18,16 @@ const InstanceBar = () => {
           <li className='relative px-6 py-3'>
             <a
               onClick={() => navigate('/overview/metrics')}
-              className='inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 hover:cursor-pointer'
+              className={
+                location.pathname === '/overview/metrics' ||
+                location.pathname === '/'
+                  ? 'inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 text-templateGray-200 hover:cursor-pointer'
+                  : 'inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-templateGray-800 dark:hover:text-templateGray-200 hover:cursor-pointer'
+              }
             >
               {(location.pathname === '/overview/metrics' ||
                 location.pathname === '/') && (
-                <span className='absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg'></span>
+                <span className='absolute inset-y-0 left-0 w-1 bg-templatePurple-600 rounded-tr-lg rounded-br-lg'></span>
               )}
               <svg
                 fill='none'
@@ -46,7 +51,11 @@ const InstanceBar = () => {
           <li className='relative px-6 py-3'>
             <a
               onClick={() => navigate('/overview/management')}
-              className='inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 hover:cursor-pointer'
+              className={
+                location.pathname === '/overview/management'
+                  ? 'inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 text-templateGray-200 hover:cursor-pointer'
+                  : 'inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-templateGray-800 dark:hover:text-templateGray-200 hover:cursor-pointer'
+              }
             >
               {location.pathname === '/overview/management' && (
                 <span className='absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg'></span>

@@ -7,7 +7,8 @@
     "start": "nodemon src/server/server.js",
     "dev": "webpack server --open",
     "devc": "concurrently \"cross-env NODE_ENV=development webpack serve --open\" \"cross-env NODE_ENV=development nodemon src/server/server.js\"",
-    "build": "webpack"
+    "build": "webpack",
+    "tailwind:dev": "tailwindcss build src/client/styles.css -o src/client/tailwind.output.css"
   },
   "author": "",
   "license": "ISC",
@@ -28,6 +29,7 @@
     "body-parser": "^1.20.3",
     "concurrently": "^9.0.1",
     "css-loader": "^7.1.2",
+    "cssnano": "^7.0.6",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "html-webpack-plugin": "^5.6.0",
