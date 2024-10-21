@@ -1,9 +1,7 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import InstanceCard from '../Components/InstanceCard.jsx';
-import Tables from '../Components/Tables.jsx';
 
 // regardless of page, we will always be fetching the array of instances
 // based on the page, we want to pass in different props to our instance cards
@@ -29,15 +27,30 @@ const InstanceContainer = () => {
 
   const createCards = () => {
     const cards = [];
+    const colors = [
+      '#4e79a7',
+      '#f28e2c',
+      '#e15759',
+      '#76b7b2',
+      '#59a14f',
+      '#edc949',
+      '#af7aa1',
+      '#ff9da7',
+      '#9c755f',
+      '#bab0ab',
+    ];
+
     for (let i = 0; i < instanceDetails.length; i++) {
       const nameTag = instanceDetails[i].tags.find((tag) => tag.Key === 'Name');
       const name = nameTag ? nameTag.Value : 'Unnamed Instance';
+      const colorIndex = i >= colors.length ? i % colors.length : i;
       console.log('instanceContainer', name);
       cards.push(
         <InstanceCard
           key={instanceDetails[i].instanceId}
           name={name}
           instanceId={instanceDetails[i].instanceId}
+          chartColor={colors[colorIndex]}
         />
       );
     }
@@ -50,8 +63,11 @@ const InstanceContainer = () => {
   }, [instanceDetails, instanceCards]);
 
   return (
-    <div className='grid gap-6 mb-8 md:grid-cols-2'>
-      <div>{instanceCards}</div>
+    <div className='container grid px-6 mx-auto'>
+      <h1 className='my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200'>
+        Metrics Overview
+      </h1>
+      <div className='grid gap-6 mb-8 md:grid-cols-2'>{instanceCards}</div>
     </div>
   );
 };
