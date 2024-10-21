@@ -1,11 +1,12 @@
-import React from 'react'
-
+import React from 'react';
 
 // OverviewMetrics renders from OverviewMetricsPage
 const OverviewMetrics = () => {
   return (
-    <div>(Insert Overview Metrics Here)</div>
-  )
-}
+    <div>
+      {/* <div>(Insert Overview Metrics Here)</div> */}
+    </div>
+  );
+};
 
-export default OverviewMetrics
+export default OverviewMetrics;
