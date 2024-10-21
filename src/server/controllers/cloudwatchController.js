@@ -14,7 +14,7 @@ cloudwatchController.getUsageData = async (req, res, next) => {
   try {
     const client = new aws.CloudWatchClient({
       region: 'us-east-1',
-      credentials: fromSSO({ profile: 'ec2-manager-908027414612' }),
+      // credentials: fromSSO({ profile: '' }),
     });
     const input = {
       // GetMetricDataInput
