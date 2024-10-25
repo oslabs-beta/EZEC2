@@ -22,7 +22,7 @@ const OverviewManagementPage = () => {
     if (!instanceDetails) fetchDetails();
   }, [instanceDetails]);
   return (
-    <div>
+    <div className='flex'>
       <OverviewManagement />
       {instanceDetails && <Tables instanceList={instanceDetails} />}
     </div>

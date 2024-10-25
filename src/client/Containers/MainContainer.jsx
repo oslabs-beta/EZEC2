@@ -1,27 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
 import UsageMetricsLineChart from '../Components/UsageMetricsLineChart.jsx';
 import SubContainer from './SubContainer.jsx';
-import InstanceBar from '../Components/InstanceBar.jsx';
+import SideBar from '../Components/SideBar.jsx';
+import MobileSidebar from '../Components/MobileSidebar.jsx';
 
-// search bar
-// sub container
+export const SidebarContext = React.createContext();
 
 // MainContainer renders from App
-const MainContainer = () => {
+export const MainContainer = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  function toggleSidebar() {
+    setIsSidebarOpen(!isSidebarOpen);
+  }
+
+  function closeSidebar() {
+    setIsSidebarOpen(false);
+  }
+
   return (
     <BrowserRouter>
       <div
         id='MainContainer'
         className='flex h-screen bg-templateGray-50 dark:bg-templateGray-900 false'
       >
-        <InstanceBar />
-        <SubContainer />
-        {/* <UsageMetricsLineChart /> */}
+        <SidebarContext.Provider
+          value={{
+            isSidebarOpen,
+            toggleSidebar,
+            closeSidebar,
+          }}
+        >
+          <SideBar />
+          <MobileSidebar />
+          <SubContainer />
+        </SidebarContext.Provider>
       </div>
     </BrowserRouter>
   );
 };
-
-export default MainContainer;

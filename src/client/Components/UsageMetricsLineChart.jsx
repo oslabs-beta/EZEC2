@@ -6,7 +6,7 @@ import {
 } from '@mui/x-charts/LineChart';
 import { useQuery } from '@tanstack/react-query';
 
-// InstanceBar renders from SubContainer
+// SideBar renders from SubContainer
 const UsageMetricsLineChart = ({ instanceId, chartColor }) => {
   let metricsData;
   let timeData;

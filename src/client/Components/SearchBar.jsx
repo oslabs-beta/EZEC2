@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
+import { SidebarContext } from '../Containers/MainContainer';
 
 // SearchBar renders from MainContainer
 const SearchBar = () => {
+  const { toggleSidebar } = useContext(SidebarContext);
+
   return (
     <div
-    id='SearchBar'
+      id='SearchBar'
       className='z-40 py-4 bg-white shadow-bottom dark:bg-templateGray-800'
     >
       <div className='container flex items-center justify-between h-full px-6 mx-auto text-templatePurple-600 dark:text-templatePurple-300'>
-        <button className='p-1 mr-5 -ml-1 rounded-md lg:hidden focus:outline-none focus:shadow-outline-purple'>
+        {/* Hamburger Menu */}
+        <button
+          className='p-1 mr-5 -ml-1 rounded-md lg:hidden focus:outline-none focus:shadow-outline-purple'
+          onClick={toggleSidebar}
+          aria-label='Menu'
+        >
           <svg
             fill='currentColor'
             viewBox='0 0 20 20'
@@ -22,6 +31,7 @@ const SearchBar = () => {
             ></path>
           </svg>
         </button>
+        {/* Search input */}
         <div className='flex justify-start flex-1 lg:mr-32'>
           <div className='relative w-full max-w-xl mr-6 focus-within:text-templatePurple-500'>
             <div className='absolute inset-y-0 flex items-center pl-2'>

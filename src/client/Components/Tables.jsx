@@ -149,6 +149,7 @@ function Tables({ instanceList }) {
       {/* <PageTitle>Tables</PageTitle> */}
 
       {/* <SectionTitle>Simple table</SectionTitle> */}
+      <div className='class="w-full overflow-hidden rounded-lg shadow-xs mb-8"'>
       <TableContainer className='mb-8 dark:bg-templateGray-800'>
         <Table>
           <TableHeader>
@@ -231,6 +232,7 @@ function Tables({ instanceList }) {
           /> */}
         </TableFooter>
       </TableContainer>
+      </div>
     </>
   );
 }
