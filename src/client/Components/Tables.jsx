@@ -149,89 +149,96 @@ function Tables({ instanceList }) {
       {/* <PageTitle>Tables</PageTitle> */}
 
       {/* <SectionTitle>Simple table</SectionTitle> */}
-      <div className='class="w-full overflow-hidden rounded-lg shadow-xs mb-8"'>
-      <TableContainer className='mb-8 dark:bg-templateGray-800'>
-        <Table>
-          <TableHeader>
-            <tr className='text-xs font-semibold tracking-wide text-left text-templateGray-500 uppercase border-b bg-templateGray-50 dark:border-templateGray-600 dark:text-templateGray-400 dark:bg-templateGray-800'>
-              <TableCell>Instance</TableCell>
-              <TableCell>ID</TableCell>
-              <TableCell>Status</TableCell>
-              <TableCell>Action</TableCell>
-            </tr>
-          </TableHeader>
-          <TableBody className='dark:bg-templateGray-800 divide-y dark:divide-templateGray-700 text-templateGray-700 dark:text-templateGray-400 dark:border-templateGray-700'>
-            {instanceList.map((instance, i) => {
-              const nameTag = instance.tags.find((tag) => tag.Key === 'Name');
-              return (
-                <TableRow key={i}>
-                  <TableCell>
-                    <div className='flex items-center text-sm'>
-                      <div>
-                        <p className='font-semibold'>{nameTag.Value}</p>
-                        {/* <p className='text-xs text-gray-600 dark:text-gray-400'>
+      <div className='w-full'>
+        <div
+          id='Table'
+          className='w-full overflow-hidden rounded-lg shadow-xs mb-8'
+        >
+          <TableContainer className='mb-8 dark:bg-templateGray-800'>
+            <Table>
+              <TableHeader>
+                <tr className='text-xs font-semibold tracking-wide text-left text-templateGray-500 uppercase border-b bg-templateGray-50 dark:border-templateGray-600 dark:text-templateGray-400 dark:bg-templateGray-800'>
+                  <TableCell>Instance</TableCell>
+                  <TableCell>ID</TableCell>
+                  <TableCell>Status</TableCell>
+                  <TableCell>Action</TableCell>
+                </tr>
+              </TableHeader>
+              <TableBody className='dark:bg-templateGray-800 divide-y dark:divide-templateGray-700 text-templateGray-700 dark:text-templateGray-400 dark:border-templateGray-700'>
+                {instanceList.map((instance, i) => {
+                  const nameTag = instance.tags.find(
+                    (tag) => tag.Key === 'Name'
+                  );
+                  return (
+                    <TableRow key={i}>
+                      <TableCell>
+                        <div className='flex items-center text-sm'>
+                          <div>
+                            <p className='font-semibold'>{nameTag.Value}</p>
+                            {/* <p className='text-xs text-gray-600 dark:text-gray-400'>
                           {instance.instanceId}
                         </p> */}
-                      </div>
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    <span className='text-sm'>{instance.instanceId}</span>
-                  </TableCell>
-                  <TableCell>
-                    <span className={badgeStyles[instance.state.Name]}>
-                      {instance.state.Name}
-                    </span>
-                    {/* <span className={badgeStyles['pending']}>pending</span>
+                          </div>
+                        </div>
+                      </TableCell>
+                      <TableCell>
+                        <span className='text-sm'>{instance.instanceId}</span>
+                      </TableCell>
+                      <TableCell>
+                        <span className={badgeStyles[instance.state.Name]}>
+                          {instance.state.Name}
+                        </span>
+                        {/* <span className={badgeStyles['pending']}>pending</span>
                     <span className={badgeStyles['stopped']}>stopped</span>
                     <span className={badgeStyles['stopping']}>stopping</span>
                     <span className={badgeStyles['shutting-down']}>shutting down</span>
                     <span className={badgeStyles['terminated']}>terminated</span> */}
-                  </TableCell>
-                  <TableCell>
-                    {/* <button
+                      </TableCell>
+                      <TableCell>
+                        {/* <button
                       className='align-bottom inline-flex items-center justify-center cursor-pointer leading-5 transition-colors duration-150 font-medium focus:outline-none px-4 py-2 rounded-lg text-sm text-gray-600 border-red-700 border dark:text-gray-400 focus:outline-none active:bg-transparent hover:border-red-500 focus:border-red-500 active:text-gray-500 focus:shadow-outline-gray'
                       type='button'
                     >
                       Stop Instance
                     </button> */}
-                    {instance.state.Name !== 'shutting-down' &&
-                      instance.state.Name !== 'terminated' && (
-                        <button
-                          className={buttonStyles[instance.state.Name]}
-                          onClick={
-                            instance.state.Name === 'running'
-                              ? () => {
-                                  handleStop(instance.instanceId);
-                                }
-                              : () => {
-                                  handleStart(instance.instanceId);
-                                }
-                          }
-                        >
-                          {instance.state.Name === 'running'
-                            ? 'Stop Instance'
-                            : 'Start Instance'}
-                        </button>
-                      )}
-                    {/* <span className='text-sm'>
+                        {instance.state.Name !== 'shutting-down' &&
+                          instance.state.Name !== 'terminated' && (
+                            <button
+                              className={buttonStyles[instance.state.Name]}
+                              onClick={
+                                instance.state.Name === 'running'
+                                  ? () => {
+                                      handleStop(instance.instanceId);
+                                    }
+                                  : () => {
+                                      handleStart(instance.instanceId);
+                                    }
+                              }
+                            >
+                              {instance.state.Name === 'running'
+                                ? 'Stop Instance'
+                                : 'Start Instance'}
+                            </button>
+                          )}
+                        {/* <span className='text-sm'>
                       Every Day I dunno
                     </span> */}
-                  </TableCell>
-                </TableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
-        <TableFooter className='dark:bg-templateGray-800 border-t dark:border-templateGray-600'>
-          {/* <Pagination
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
+              </TableBody>
+            </Table>
+            <TableFooter className='dark:bg-templateGray-800 border-t dark:border-templateGray-600'>
+              {/* <Pagination
             totalResults={totalResults}
             resultsPerPage={resultsPerPage}
             onChange={onPageChangeTable1}
             label='Table navigation'
           /> */}
-        </TableFooter>
-      </TableContainer>
+            </TableFooter>
+          </TableContainer>
+        </div>
       </div>
     </>
   );

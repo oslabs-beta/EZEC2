@@ -64,9 +64,6 @@ const InstanceContainer = () => {
 
   return (
     <div className='container grid px-6 mx-auto'>
-      <h1 className='my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200'>
-        Metrics Overview
-      </h1>
       <div className='grid gap-6 mb-8 md:grid-cols-2'>{instanceCards}</div>
     </div>
   );
