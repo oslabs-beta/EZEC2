@@ -1,12 +1,10 @@
 const cron = require('node-cron');
 const ec2Commands = require('../helpers/ec2InstanceCommands');
-const aws = require('@aws-sdk/client-ec2');
-const client = new aws.EC2Client({
-  region: 'us-east-1',
-});
+const models = require('../models/scheduledJobModel');
 
 const schedulerController = {};
 
+// Use this in the frontend instead
 function parseCronExpression(req) {
   let expression = '';
   if (req.body.minute) {
@@ -55,7 +53,7 @@ schedulerController.scheduleJob = async (req, res, next) => {
   switch (req.body.jobAction) {
     case 'startInstance':
       console.log('Setting cron function for start instance');
-      cronFunction = () => {
+      cronFunction = async () => {
         ec2Commands.startInstance(req.body.instanceIds);
       };
 
@@ -78,6 +76,12 @@ schedulerController.scheduleJob = async (req, res, next) => {
     cron.schedule(cronExpression, cronFunction, {
       timezone: req.body.timezone,
     });
+    const jobResult = await models.Job.create({
+      cronSchedule: cronExpression,
+      jobType: req.body.jobAction,
+      instanceId: req.body.instanceIds,
+    });
+    console.log(jobResult);
     return next();
   } catch (e) {
     console.log(e);

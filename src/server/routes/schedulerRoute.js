@@ -4,9 +4,8 @@ const schedulerController = require('../controllers/schedulerController');
 const router = express.Router();
 
 router.post('/scheduleJob', schedulerController.scheduleJob, (req, res) => {
-  return res.json();
+  return res.json({ result: 'Job successfully scheduled ' });
 });
-
 
 router.get(
   '/getScheduledJobs',
@@ -15,9 +14,5 @@ router.get(
     return res.json();
   }
 );
-
-// router.post('/executeJob', schedulerController.executeJob, (req, res) => {
-//   return res.json();
-// });
 
 module.exports = router;
