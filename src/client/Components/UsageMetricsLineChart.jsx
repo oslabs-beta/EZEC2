@@ -22,6 +22,7 @@ const UsageMetricsLineChart = ({ instanceId }) => {
   if (isPending) return 'Loading...';
 
   if (error) return 'An error has occurred: ' + error.message;
+//build an array
 
   timeData = data.MetricDataResults[0].Timestamps.map((timestamp) => {
     // console.log(new Date(timestamp).toTimeString().split(' (')[0]);

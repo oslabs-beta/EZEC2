@@ -14,28 +14,177 @@ cloudwatchController.getUsageData = async (req, res, next) => {
   try {
     const client = new aws.CloudWatchClient({
       region: 'us-east-1',
-      credentials: fromSSO({ profile: 'ec2-manager-908027414612' }),
+      credentials: fromSSO({ profile: 'ezec2' }),
     });
+    //find schema
     const input = {
       // GetMetricDataInput
       MetricDataQueries: [
+        // CPU Utilization
         {
-          Id: 'cpuUsage', // required
+          Id: 'cpuUsage',
           MetricStat: {
             Metric: {
               Namespace: 'AWS/EC2',
               MetricName: 'CPUUtilization',
               Dimensions: [
                 {
-                  Name: 'InstanceId', // required
-                  Value: instanceId, // required
+                  Name: 'InstanceId',
+                  Value: instanceId,
                 },
               ],
             },
-            Period: 900, // required
-            Stat: 'Average', // required
+            Period: 900,
+            Stat: 'Average',
             Unit: 'Percent',
           },
+          ReturnData: true,
+        },
+        // CPU Credit Balance
+        {
+          Id: 'cpuCreditBalance',
+          MetricStat: {
+            Metric: {
+              Namespace: 'AWS/EC2',
+              MetricName: 'CPUCreditBalance',
+              Dimensions: [
+                {
+                  Name: 'InstanceId',
+                  Value: instanceId,
+                },
+              ],
+            },
+            Period: 900,
+            Stat: 'Average',
+          },
+          ReturnData: true,
+        },
+        // CPU Credit Usage
+        {
+          Id: 'cpuCreditUsage',
+          MetricStat: {
+            Metric: {
+              Namespace: 'AWS/EC2',
+              MetricName: 'CPUCreditUsage',
+              Dimensions: [
+                {
+                  Name: 'InstanceId',
+                  Value: instanceId,
+                },
+              ],
+            },
+            Period: 900,
+            Stat: 'Average',
+          },
+          ReturnData: true,
+        },
+        // Memory Usage
+        {
+          Id: 'memoryUsage',
+          MetricStat: {
+            Metric: {
+              Namespace: 'CWAgent',
+              MetricName: 'mem_used_percent',
+              Dimensions: [
+                {
+                  Name: 'InstanceId',
+                  Value: instanceId,
+                },
+              ],
+            },
+            Period: 900,
+            Stat: 'Average',
+            Unit: 'Percent',
+          },
+          ReturnData: true,
+        },
+        // Network In
+        {
+          Id: 'networkIn',
+          MetricStat: {
+            Metric: {
+              Namespace: 'AWS/EC2',
+              MetricName: 'NetworkIn',
+              Dimensions: [
+                {
+                  Name: 'InstanceId',
+                  Value: instanceId,
+                },
+              ],
+            },
+            Period: 900,
+            Stat: 'Average',
+            Unit: 'Bytes',
+          },
+          ReturnData: true,
+        },
+        // Network Out
+        {
+          Id: 'networkOut',
+          MetricStat: {
+            Metric: {
+              Namespace: 'AWS/EC2',
+              MetricName: 'NetworkOut',
+              Dimensions: [
+                {
+                  Name: 'InstanceId',
+                  Value: instanceId,
+                },
+              ],
+            },
+            Period: 900,
+            Stat: 'Average',
+            Unit: 'Bytes',
+          },
+          ReturnData: true,
+        },
+        
+        // Disk Read Operations
+        {
+          Id: 'diskReadOps',
+          MetricStat: {
+            Metric: {
+              Namespace: 'AWS/EC2',
+              MetricName: 'DiskReadOps',
+              Dimensions: [
+                {
+                  Name: 'InstanceId',
+                  Value: instanceId,
+                },
+              ],
+            },
+            Period: 900,
+            Stat: 'Sum',
+          },
+          ReturnData: true,
+        },
+        // Disk Write Operations
+        {
+          Id: 'diskWriteOps',
+          MetricStat: {
+            Metric: {
+              Namespace: 'AWS/EC2',
+              MetricName: 'DiskWriteOps',
+              Dimensions: [
+                {
+                  Name: 'InstanceId',
+                  Value: instanceId,
+                },
+              ],
+            },
+            Period: 900,
+            Stat: 'Sum',
+          },
+          // {
+          //   "view": "timeSeries",
+          //   "stat": "Average",
+          //   "period": 300,
+          //   "stacked": false,
+          //   "yAxis": {
+          //       "left": {
+          //           "min": 0
+          //       }
+          //   },
           ReturnData: true,
         },
       ],

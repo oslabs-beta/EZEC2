@@ -28,6 +28,7 @@
     "body-parser": "^1.20.3",
     "concurrently": "^9.0.1",
     "css-loader": "^7.1.2",
+    "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "html-webpack-plugin": "^5.6.0",
     "mui": "^0.0.1",
