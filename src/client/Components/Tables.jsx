@@ -19,28 +19,28 @@ import {
 
 const badgeStyles = {
   running:
-    'inline-flex px-2 text-xs font-medium leading-5 rounded-full text-green-700 bg-green-100 dark:bg-green-700 dark:text-green-100',
+    'inline-flex px-2 text-xs font-medium leading-5 rounded-full text-templateGreen-700 bg-templateGreen-100 dark:bg-templateGreen-700 dark:text-templateGreen-100',
   pending:
-    'inline-flex px-2 text-xs font-medium leading-5 rounded-full text-yellow-800 bg-yellow-100 dark:text-slate-700 dark:bg-yellow-300',
+    'inline-flex px-2 text-xs font-medium leading-5 rounded-full text-templateYellow-800 bg-templateYellow-100 dark:text-templateSlate-700 dark:bg-templateYellow-300',
   stopped:
-    'inline-flex px-2 text-xs font-medium leading-5 rounded-full text-red-700 bg-red-100 dark:text-red-100 dark:bg-red-700',
+    'inline-flex px-2 text-xs font-medium leading-5 rounded-full text-templateRed-700 bg-templateRed-100 dark:text-templateRed-100 dark:bg-templateRed-700',
   stopping:
-    'inline-flex px-2 text-xs font-medium leading-5 rounded-full text-orange-700 bg-orange-100 dark:text-orange-100 dark:bg-orange-700',
+    'inline-flex px-2 text-xs font-medium leading-5 rounded-full text-templateOrange-700 bg-templateOrange-100 dark:text-templateOrange-100 dark:bg-templateOrange-700',
   'shutting-down':
-    'inline-flex px-2 text-xs font-medium leading-5 rounded-full text-blue-700 bg-blue-100 dark:text-blue-100 dark:bg-blue-700',
+    'inline-flex px-2 text-xs font-medium leading-5 rounded-full text-templateBlue-700 bg-templateBlue-100 dark:text-templateBlue-100 dark:bg-templateBlue-700',
   terminated:
-    'inline-flex px-2 text-xs font-medium leading-5 rounded-full text-gray-700 bg-gray-100 dark:text-gray-100 dark:bg-gray-700',
+    'inline-flex px-2 text-xs font-medium leading-5 rounded-full text-templateGray-700 bg-templateGray-100 dark:text-templateGray-100 dark:bg-templateGray-700',
 };
 
 const buttonStyles = {
   running:
-    'align-bottom inline-flex items-center justify-center cursor-pointer leading-5 transition-colors duration-150 font-medium focus:outline-none px-4 py-2 rounded-lg text-sm text-gray-600 border-red-700 border dark:text-gray-400 focus:outline-none active:bg-transparent hover:border-red-500 focus:border-red-500 active:text-red-500 focus:shadow-outline-red',
+    'align-bottom inline-flex items-center justify-center cursor-pointer leading-5 transition-colors duration-150 font-medium focus:outline-none px-4 py-2 rounded-lg text-sm text-templateGray-600 border-templateRed-700 border dark:text-templateGray-400 focus:outline-none active:bg-transparent hover:border-templateRed-500 focus:border-templateRed-500 active:text-templateRed-500 focus:shadow-outline-red',
   stopped:
-    'align-bottom inline-flex items-center justify-center cursor-pointer leading-5 transition-colors duration-150 font-medium focus:outline-none px-4 py-2 rounded-lg text-sm text-gray-600 border-green-700 border dark:text-gray-400 focus:outline-none active:bg-transparent hover:border-green-500 focus:border-green-500 active:text-gray-500 focus:shadow-outline-gray',
+    'align-bottom inline-flex items-center justify-center cursor-pointer leading-5 transition-colors duration-150 font-medium focus:outline-none px-4 py-2 rounded-lg text-sm text-templateGray-600 border-templateGreen-700 border dark:text-templateGray-400 focus:outline-none active:bg-transparent hover:border-templateGreen-500 focus:border-templateGreen-500 active:text-templateGray-500 focus:shadow-outline-gray',
   pending:
-    'align-bottom inline-flex items-center justify-center cursor-pointer leading-5 transition-colors duration-150 font-medium focus:outline-none px-4 py-2 rounded-lg text-sm text-gray-600 border-gray-300 border dark:text-gray-400 focus:outline-none opacity-50 cursor-not-allowed bg-gray-300',
+    'align-bottom inline-flex items-center justify-center cursor-pointer leading-5 transition-colors duration-150 font-medium focus:outline-none px-4 py-2 rounded-lg text-sm text-templateGray-600 border-templateGray-300 border dark:text-templateGray-400 focus:outline-none opacity-50 cursor-not-allowed bg-templateGray-300',
   stopping:
-    'align-bottom inline-flex items-center justify-center cursor-pointer leading-5 transition-colors duration-150 font-medium focus:outline-none px-4 py-2 rounded-lg text-sm text-gray-600 border-gray-300 border dark:text-gray-400 focus:outline-none opacity-50 cursor-not-allowed bg-gray-300',
+    'align-bottom inline-flex items-center justify-center cursor-pointer leading-5 transition-colors duration-150 font-medium focus:outline-none px-4 py-2 rounded-lg text-sm text-templateGray-600 border-templateGray-300 border dark:text-templateGray-400 focus:outline-none opacity-50 cursor-not-allowed bg-templateGray-300',
 };
 
 // original button styling
@@ -64,7 +64,7 @@ function Tables({ instanceList }) {
 
   function handleStop(instanceIds) {
     if (!Array.isArray(instanceIds)) {
-        instanceIds = [instanceIds];
+      instanceIds = [instanceIds];
     }
     const data = {
       instanceIds: instanceIds,
@@ -83,7 +83,7 @@ function Tables({ instanceList }) {
 
   function handleStart(instanceIds) {
     if (!Array.isArray(instanceIds)) {
-        instanceIds = [instanceIds];
+      instanceIds = [instanceIds];
     }
     const data = {
       instanceIds: instanceIds,
@@ -149,17 +149,17 @@ function Tables({ instanceList }) {
       {/* <PageTitle>Tables</PageTitle> */}
 
       {/* <SectionTitle>Simple table</SectionTitle> */}
-      <TableContainer className='mb-8'>
+      <TableContainer className='mb-8 dark:bg-templateGray-800'>
         <Table>
           <TableHeader>
-            <tr>
+            <tr className='text-xs font-semibold tracking-wide text-left text-templateGray-500 uppercase border-b bg-templateGray-50 dark:border-templateGray-600 dark:text-templateGray-400 dark:bg-templateGray-800'>
               <TableCell>Instance</TableCell>
-              <TableCell>ID? (or other data?)</TableCell>
+              <TableCell>ID</TableCell>
               <TableCell>Status</TableCell>
               <TableCell>Action</TableCell>
             </tr>
           </TableHeader>
-          <TableBody>
+          <TableBody className='dark:bg-templateGray-800 divide-y dark:divide-templateGray-700 text-templateGray-700 dark:text-templateGray-400 dark:border-templateGray-700'>
             {instanceList.map((instance, i) => {
               const nameTag = instance.tags.find((tag) => tag.Key === 'Name');
               return (
@@ -222,7 +222,7 @@ function Tables({ instanceList }) {
             })}
           </TableBody>
         </Table>
-        <TableFooter>
+        <TableFooter className='dark:bg-templateGray-800 border-t dark:border-templateGray-600'>
           {/* <Pagination
             totalResults={totalResults}
             resultsPerPage={resultsPerPage}

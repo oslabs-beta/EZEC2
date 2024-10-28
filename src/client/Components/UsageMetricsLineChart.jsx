@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   LineChart,
   lineElementClasses,
@@ -7,16 +7,19 @@ import {
 import { useQuery } from '@tanstack/react-query';
 
 // InstanceBar renders from SubContainer
-const UsageMetricsLineChart = ({ instanceId }) => {
+const UsageMetricsLineChart = ({ instanceId, chartColor }) => {
   let metricsData;
   let timeData;
   // variable for dev only. instanceId should be populated via prop and used to retrieve usage data
   console.log('UsageMetricsLineChart', instanceId);
 
   const { isPending, error, data } = useQuery({
-    queryKey: ['metricData'],
-    queryFn: () =>
-      fetch('/cloudwatch/getUsageData/' + instanceId).then((res) => res.json()),
+    queryKey: ['metricData' + instanceId],
+    queryFn: async () => {
+      return await fetch('/cloudwatch/getUsageData/' + instanceId).then((res) =>
+        res.json()
+      );
+    },
   });
 
   if (isPending) return 'Loading...';
@@ -35,12 +38,13 @@ const UsageMetricsLineChart = ({ instanceId }) => {
   return (
     <LineChart
       className='bg-opacity-70 bg-white rounded-md'
-      width={500}
+      // width={500}
       height={300}
       series={[
         {
           data: metricsData,
           label: 'CPU Utilization',
+          color: chartColor,
         },
       ]}
       yAxis={[{ max: 100, valueFormatter: (v) => v + '%' }]}

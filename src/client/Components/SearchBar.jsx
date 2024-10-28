@@ -5,9 +5,9 @@ const SearchBar = () => {
   return (
     <div
     id='SearchBar'
-      className='z-40 py-4 bg-white shadow-bottom dark:bg-gray-800'
+      className='z-40 py-4 bg-white shadow-bottom dark:bg-templateGray-800'
     >
-      <div className='container flex items-center justify-between h-full px-6 mx-auto text-purple-600 dark:text-purple-300'>
+      <div className='container flex items-center justify-between h-full px-6 mx-auto text-templatePurple-600 dark:text-templatePurple-300'>
         <button className='p-1 mr-5 -ml-1 rounded-md lg:hidden focus:outline-none focus:shadow-outline-purple'>
           <svg
             fill='currentColor'
@@ -23,7 +23,7 @@ const SearchBar = () => {
           </svg>
         </button>
         <div className='flex justify-start flex-1 lg:mr-32'>
-          <div className='relative w-full max-w-xl mr-6 focus-within:text-purple-500'>
+          <div className='relative w-full max-w-xl mr-6 focus-within:text-templatePurple-500'>
             <div className='absolute inset-y-0 flex items-center pl-2'>
               <svg
                 aria-hidden='true'
@@ -39,7 +39,7 @@ const SearchBar = () => {
               </svg>
             </div>
             <input
-              className='block w-full text-sm focus:outline-none dark:text-gray-300 form-input leading-5 focus:border-purple-400 dark:border-gray-600 focus:shadow-outline-purple dark:focus:border-gray-600 dark:focus:shadow-outline-gray dark:bg-gray-700 pl-8 text-gray-700 rounded-md'
+              className='block w-full text-sm focus:outline-none dark:text-templateGray-300 form-input leading-5 focus:border-templatePurple-400 dark:border-templateGray-600 focus:shadow-outline-purple dark:focus:border-templateGray-600 dark:focus:shadow-outline-gray dark:bg-templateGray-700 pl-8 text-templateGray-700 rounded-md'
               type='text'
               placeholder='Search for instances'
               aria-label='Search'
@@ -83,7 +83,7 @@ const SearchBar = () => {
               </svg>
               <span
                 aria-hidden='true'
-                className='absolute top-0 right-0 inline-block w-3 h-3 transform translate-x-1 -translate-y-1 bg-red-600 border-2 border-white rounded-full dark:border-gray-800'
+                className='absolute top-0 right-0 inline-block w-3 h-3 transform translate-x-1 -translate-y-1 bg-templateRed-600 border-2 border-white rounded-full dark:border-templateGray-800'
               ></span>
             </button>
           </li>
