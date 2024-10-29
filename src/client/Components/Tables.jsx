@@ -79,9 +79,6 @@ function Tables({ instanceList }) {
 
   return (
     <>
-      {/* <PageTitle>Tables</PageTitle> */}
-
-      {/* <SectionTitle>Simple table</SectionTitle> */}
       <div className='w-full'>
         <div
           id='Table'
@@ -117,9 +114,6 @@ function Tables({ instanceList }) {
                           <div className='flex items-center text-sm'>
                             <div>
                               <p className='font-semibold'>{nameTag.Value}</p>
-                              {/* <p className='text-xs text-gray-600 dark:text-gray-400'>
-                          {instance.instanceId}
-                        </p> */}
                             </div>
                           </div>
                         </TableCell>
