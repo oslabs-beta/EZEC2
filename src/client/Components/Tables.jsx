@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { useContext } from 'react';
 import {
   Table,
   TableHeader,
@@ -8,11 +7,9 @@ import {
   TableRow,
   TableFooter,
   TableContainer,
-  Badge,
-  Avatar,
-  Button,
-  Pagination,
 } from '@windmill/react-ui';
+
+import { SearchBarContext } from '../Containers/MainContainer';
 
 const badgeStyles = {
   running:
@@ -41,9 +38,7 @@ const buttonStyles = {
 };
 
 function Tables({ instanceList }) {
-
-  console.log(instanceList, instanceList[0].state.Name);
-
+  const { search } = useContext(SearchBarContext);
   function handleStop(instanceIds) {
     if (!Array.isArray(instanceIds)) {
       instanceIds = [instanceIds];
@@ -107,54 +102,63 @@ function Tables({ instanceList }) {
                   const nameTag = instance.tags.find(
                     (tag) => tag.Key === 'Name'
                   );
-                  return (
-                    <TableRow key={i}>
-                      <TableCell>
-                        <div className='flex items-center text-sm'>
-                          <div>
-                            <p className='font-semibold'>{nameTag.Value}</p>
-                            {/* <p className='text-xs text-gray-600 dark:text-gray-400'>
+
+                  if (
+                    nameTag?.Value?.toUpperCase().includes(
+                      search.toUpperCase()
+                    ) ||
+                    instance.instanceId
+                      .toUpperCase()
+                      .includes(search.toUpperCase())
+                  ) {
+                    return (
+                      <TableRow key={i}>
+                        <TableCell>
+                          <div className='flex items-center text-sm'>
+                            <div>
+                              <p className='font-semibold'>{nameTag.Value}</p>
+                              {/* <p className='text-xs text-gray-600 dark:text-gray-400'>
                           {instance.instanceId}
                         </p> */}
+                            </div>
                           </div>
-                        </div>
-                      </TableCell>
-                      <TableCell>
-                        <span className='text-sm'>{instance.instanceId}</span>
-                      </TableCell>
-                      <TableCell>
-                        <span className={badgeStyles[instance.state.Name]}>
-                          {instance.state.Name}
-                        </span>
-                      </TableCell>
-                      <TableCell>
-                        {instance.state.Name !== 'shutting-down' &&
-                          instance.state.Name !== 'terminated' && (
-                            <button
-                              className={buttonStyles[instance.state.Name]}
-                              onClick={
-                                instance.state.Name === 'running'
-                                  ? () => {
-                                      handleStop(instance.instanceId);
-                                    }
-                                  : () => {
-                                      handleStart(instance.instanceId);
-                                    }
-                              }
-                            >
-                              {instance.state.Name === 'running'
-                                ? 'Stop Instance'
-                                : 'Start Instance'}
-                            </button>
-                          )}
-                      </TableCell>
-                    </TableRow>
-                  );
+                        </TableCell>
+                        <TableCell>
+                          <span className='text-sm'>{instance.instanceId}</span>
+                        </TableCell>
+                        <TableCell>
+                          <span className={badgeStyles[instance.state.Name]}>
+                            {instance.state.Name}
+                          </span>
+                        </TableCell>
+                        <TableCell>
+                          {instance.state.Name !== 'shutting-down' &&
+                            instance.state.Name !== 'terminated' && (
+                              <button
+                                className={buttonStyles[instance.state.Name]}
+                                onClick={
+                                  instance.state.Name === 'running'
+                                    ? () => {
+                                        handleStop(instance.instanceId);
+                                      }
+                                    : () => {
+                                        handleStart(instance.instanceId);
+                                      }
+                                }
+                              >
+                                {instance.state.Name === 'running'
+                                  ? 'Stop Instance'
+                                  : 'Start Instance'}
+                              </button>
+                            )}
+                        </TableCell>
+                      </TableRow>
+                    );
+                  }
                 })}
               </TableBody>
             </Table>
-            <TableFooter className='dark:bg-templateGray-800 border-t dark:border-templateGray-600'>
-            </TableFooter>
+            <TableFooter className='dark:bg-templateGray-800 border-t dark:border-templateGray-600'></TableFooter>
           </TableContainer>
         </div>
       </div>
