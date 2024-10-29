@@ -1,10 +1,8 @@
 const mongoose = require('mongoose');
-
-const MONGO_URI =
-  'mongodb+srv://jappleton101:yh5EIwZc5q4Q1Cmf@personal-database.n79iw9r.mongodb.net/';
+const dotenv = require('dotenv').config();
 
 mongoose
-  .connect(MONGO_URI, {
+  .connect(process.env.MONGO_URI, {
     dbName: 'ezec2-jobs',
   })
   .then(() => console.log('Connected to Mongo DB.'))
