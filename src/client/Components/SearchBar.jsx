@@ -8,18 +8,6 @@ import { InstanceContext } from '../App';
 const SearchBar = () => {
   const { toggleSidebar } = useContext(SidebarContext);
   const { setSearch } = useContext(SearchBarContext);
-  // const { instanceDetails } = useContext(InstanceContext);
-
-  // console.log(instanceDetails)
-
-  // for (let i = 0; i < instanceDetails.length; i++) {
-  //   const nameTag = instanceDetails[i].tags.find((tag) => tag.Key === 'Name');
-  //   const name = nameTag.Value;
-  // }
-
-  // need to only display instances thats name or id match the event target value
-  // need access to names and ids
-  // on change, set search
 
   return (
     <div
