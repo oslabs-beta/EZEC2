@@ -175,16 +175,6 @@ cloudwatchController.getUsageData = async (req, res, next) => {
             Period: 900,
             Stat: 'Sum',
           },
-          // {
-          //   "view": "timeSeries",
-          //   "stat": "Average",
-          //   "period": 300,
-          //   "stacked": false,
-          //   "yAxis": {
-          //       "left": {
-          //           "min": 0
-          //       }
-          //   },
           ReturnData: true,
         },
       ],
