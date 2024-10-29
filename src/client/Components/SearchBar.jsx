@@ -1,10 +1,25 @@
 import React, { useContext } from 'react';
 
 import { SidebarContext } from '../Containers/MainContainer';
+import { SearchBarContext } from '../Containers/MainContainer';
+import { InstanceContext } from '../App';
 
 // SearchBar renders from MainContainer
 const SearchBar = () => {
   const { toggleSidebar } = useContext(SidebarContext);
+  const { setSearch } = useContext(SearchBarContext);
+  // const { instanceDetails } = useContext(InstanceContext);
+
+  // console.log(instanceDetails)
+
+  // for (let i = 0; i < instanceDetails.length; i++) {
+  //   const nameTag = instanceDetails[i].tags.find((tag) => tag.Key === 'Name');
+  //   const name = nameTag.Value;
+  // }
+
+  // need to only display instances thats name or id match the event target value
+  // need access to names and ids
+  // on change, set search
 
   return (
     <div
@@ -31,9 +46,12 @@ const SearchBar = () => {
             ></path>
           </svg>
         </button>
-        {/* Search input */}
+
+        {/* <---- Search input ----> */}
+
         <div className='flex justify-start flex-1 lg:mr-32'>
           <div className='relative w-full max-w-xl mr-6 focus-within:text-templatePurple-500'>
+            {/* Search icon */}
             <div className='absolute inset-y-0 flex items-center pl-2'>
               <svg
                 aria-hidden='true'
@@ -48,17 +66,19 @@ const SearchBar = () => {
                 ></path>
               </svg>
             </div>
+            {/* Input */}
             <input
               className='block w-full text-sm focus:outline-none dark:text-templateGray-300 form-input leading-5 focus:border-templatePurple-400 dark:border-templateGray-600 focus:shadow-outline-purple dark:focus:border-templateGray-600 dark:focus:shadow-outline-gray dark:bg-templateGray-700 pl-8 text-templateGray-700 rounded-md'
               type='text'
               placeholder='Search for instances'
               aria-label='Search'
+              onChange={(e) => setSearch(e.target.value)}
             ></input>
           </div>
         </div>
         <ul className='flex items-center flex-shrink-0 space-x-6'>
+          {/* Dark/Light mode button */}
           <li className='flex'>
-            {/* Dark/Light mode button */}
             <button
               className='rounded-md focus:outline-none focus:shadow-outline-purple'
               aria-label='Toggle color mode'
@@ -77,7 +97,9 @@ const SearchBar = () => {
               </svg>
             </button>
           </li>
-          <li className='relative'>
+
+          {/* Notification Bell */}
+          {/* <li className='relative'>
             <button
               className='relative align-middle rounded-md focus:outline-none focus:shadow-outline-purple'
               aria-label='Notifications'
@@ -96,7 +118,9 @@ const SearchBar = () => {
                 className='absolute top-0 right-0 inline-block w-3 h-3 transform translate-x-1 -translate-y-1 bg-templateRed-600 border-2 border-white rounded-full dark:border-templateGray-800'
               ></span>
             </button>
-          </li>
+          </li> */}
+
+          {/* Profile/Account button */}
           {/* <li className='relative'>
             <button
               className='rounded-full focus:shadow-outline-purple focus:outline-none'
