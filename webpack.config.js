@@ -24,12 +24,12 @@ module.exports = {
       },
       {
         test: /\.tsx?/,
-        exclude: /node_modules/,
+        // exclude: /node_modules/,
         use: ['ts-loader'],
       },
       {
-        test: /\.css/,
-        use: ['style-loader', 'css-loader'],
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
     ],
   },
@@ -39,7 +39,7 @@ module.exports = {
     },
     proxy: [
       {
-        context: ['/api'],
+        context: ['/'],
         target: 'http://localhost:3000',
         changeOrigin: true,
         logLevel: 'info',
