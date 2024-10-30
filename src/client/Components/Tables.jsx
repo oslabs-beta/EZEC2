@@ -39,7 +39,7 @@ const buttonStyles = {
 
 function Tables({ instanceList }) {
   const { search } = useContext(SearchBarContext);
-  console.log(instanceList);
+
   function handleStop(instanceIds) {
     if (!Array.isArray(instanceIds)) {
       instanceIds = [instanceIds];
