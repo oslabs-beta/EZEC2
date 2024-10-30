@@ -39,6 +39,7 @@ const buttonStyles = {
 
 function Tables({ instanceList }) {
   const { search } = useContext(SearchBarContext);
+  console.log(instanceList);
   function handleStop(instanceIds) {
     if (!Array.isArray(instanceIds)) {
       instanceIds = [instanceIds];
@@ -90,6 +91,7 @@ function Tables({ instanceList }) {
                 <tr className='text-xs font-semibold tracking-wide text-left text-templateGray-500 uppercase border-b bg-templateGray-50 dark:border-templateGray-600 dark:text-templateGray-400 dark:bg-templateGray-800'>
                   <TableCell>Instance</TableCell>
                   <TableCell>ID</TableCell>
+                  <TableCell>Security Groups</TableCell>
                   <TableCell>Status</TableCell>
                   <TableCell>Action</TableCell>
                 </tr>
@@ -119,6 +121,15 @@ function Tables({ instanceList }) {
                         </TableCell>
                         <TableCell>
                           <span className='text-sm'>{instance.instanceId}</span>
+                        </TableCell>
+                        <TableCell>
+                          {instance.securityGroups.map((group, i) => {
+                            if (i === instance.securityGroups.length - 1) {
+                              return <span>{group.GroupName}</span>;
+                            } else {
+                              return <span>{group.GroupName}, </span>;
+                            }
+                          })}
                         </TableCell>
                         <TableCell>
                           <span className={badgeStyles[instance.state.Name]}>
