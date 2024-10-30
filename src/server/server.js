@@ -4,8 +4,19 @@ const app = express();
 const ec2Router = require('./routes/ec2Route.js');
 const cloudwatchRouter = require('./routes/cloudwatchRoute.js');
 const schedulerRouter = require('./routes/schedulerRoute.js');
+const path = require('path');
 
 app.use(express.json());
+
+app.use('/', express.static(path.join(__dirname, '../../build')));
+
+app.get('/', (req, res) => {
+  {
+    return res
+      .status(200)
+      .sendFile(path.join(__dirname, '../../build/index.html'));
+  }
+});
 
 app.use('/ec2', ec2Router);
 
