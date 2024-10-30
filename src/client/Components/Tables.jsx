@@ -108,7 +108,12 @@ function Tables({ instanceList }) {
                     ) ||
                     instance.instanceId
                       .toUpperCase()
-                      .includes(search.toUpperCase())
+                      .includes(search.toUpperCase()) ||
+                    instance.securityGroups.some((group) =>
+                      group.GroupName.toUpperCase().includes(
+                        search.toUpperCase()
+                      )
+                    )
                   ) {
                     return (
                       <TableRow key={i}>
