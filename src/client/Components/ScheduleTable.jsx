@@ -126,7 +126,7 @@ function ScheduleTable({ instanceList }) {
         };
 
         await fetch('/scheduler/scheduleJob', requestOptions);
-
+        refetch();
         alert('Schedule saved');
       }
     } else {
@@ -177,13 +177,13 @@ function ScheduleTable({ instanceList }) {
       newSchedule[instanceToClearSchedule].stopDate = null;
       newSchedule[instanceToClearSchedule].dayOfWeek = [];
       setSchedule(newSchedule);
+      refetch();
     } else {
       alert('No schedule set for this instance');
     }
   }
 
   function handleCheckboxClick(e) {
-    console.log(schedule);
     const instanceToBeSaved = e.target.id.split('|')[1];
     const dayToBeAdded = e.target.id.split('|')[0];
     const checked = e.target.checked;
@@ -284,7 +284,6 @@ function ScheduleTable({ instanceList }) {
                               : null
                           }
                           onAccept={(value) => {
-                            console.log(value);
                             const newSchedule = Object.assign(
                               {},
                               { ...schedule }
@@ -422,7 +421,6 @@ function ScheduleTable({ instanceList }) {
                   <button
                     onClick={(e) => {
                       saveSchedule(e);
-                      refetch;
                     }}
                     id={instance.instanceId + '|save-button'}
                     className='align-bottom inline-flex items-center justify-center cursor-pointer leading-5 transition-colors duration-150 font-medium focus:outline-none px-4 py-2 rounded-lg text-sm text-templateGray-600 border-templateGreen-700 border dark:text-templateGray-400 focus:outline-none active:bg-transparent hover:border-templateGreen-500 focus:border-templateGreen-500 active:text-templateGray-500 focus:shadow-outline-gray'
@@ -433,7 +431,6 @@ function ScheduleTable({ instanceList }) {
                   <button
                     onClick={(e) => {
                       deleteSchedule(e);
-                      refetch;
                     }}
                     id={instance.instanceId + '|clear-button'}
                     className='align-bottom inline-flex items-center justify-center cursor-pointer leading-5 transition-colors duration-150 font-medium focus:outline-none px-4 py-2 rounded-lg text-sm text-templateGray-600 border-templateRed-700 border dark:text-templateGray-400 focus:outline-none active:bg-transparent hover:border-templateRed-500 focus:border-templateRed-500 active:text-templateRed-500 focus:shadow-outline-red'
