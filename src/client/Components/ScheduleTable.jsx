@@ -219,249 +219,267 @@ function ScheduleTable({ instanceList }) {
   if (error) return 'An error has occurred: ' + error.message;
 
   return (
-    <TableContainer className='mb-8 dark:bg-templateGray-800'>
-      <Table>
-        <TableHeader>
-          <tr className='text-xs font-semibold tracking-wide text-left text-templateGray-500 uppercase border-b bg-templateGray-50 dark:border-templateGray-600 dark:text-templateGray-400 dark:bg-templateGray-800'>
-            <TableCell>Instance Name</TableCell>
-            <TableCell>Instance ID</TableCell>
-            <TableCell>Start Time</TableCell>
-            <TableCell>Stop Time</TableCell>
-            <TableCell>Days</TableCell>
-            <TableCell></TableCell>
-          </tr>
-        </TableHeader>
-        <TableBody className='dark:bg-templateGray-800 divide-y dark:divide-templateGray-700 text-templateGray-700 dark:text-templateGray-400 dark:border-templateGray-700'>
-          {instanceList.map((instance, i) => {
-            const nameTag = instance.tags.find((tag) => tag.Key === 'Name');
-            if (
-              nameTag?.Value?.toUpperCase().includes(search.toUpperCase()) ||
-              instance.instanceId.toUpperCase().includes(search.toUpperCase())
-            ) {
-              return (
-                <TableRow key={i}>
-                  <TableCell>
-                    <div className='flex items-center text-sm'>
-                      <div>
-                        <p className='font-semibold'>{nameTag.Value}</p>
+    <div className='w-full overflow-hidden rounded-lg flex px-6'>
+      <TableContainer className='mb-8 dark:bg-templateGray-800'>
+        <Table>
+          <TableHeader>
+            <tr className='text-xs font-semibold tracking-wide text-left text-templateGray-500 uppercase border-b bg-templateGray-50 dark:border-templateGray-600 dark:text-templateGray-400 dark:bg-templateGray-800'>
+              <TableCell>Instance Name</TableCell>
+              <TableCell>Instance ID</TableCell>
+              <TableCell>Start Time</TableCell>
+              <TableCell>Stop Time</TableCell>
+              <TableCell>Days</TableCell>
+              <TableCell></TableCell>
+            </tr>
+          </TableHeader>
+          <TableBody className='dark:bg-templateGray-800 divide-y dark:divide-templateGray-700 text-templateGray-700 dark:text-templateGray-400 dark:border-templateGray-700'>
+            {instanceList.map((instance, i) => {
+              const nameTag = instance.tags.find((tag) => tag.Key === 'Name');
+              if (
+                nameTag?.Value?.toUpperCase().includes(search.toUpperCase()) ||
+                instance.instanceId.toUpperCase().includes(search.toUpperCase())
+              ) {
+                return (
+                  <TableRow key={i}>
+                    <TableCell>
+                      <div className='flex items-center text-sm'>
+                        <div>
+                          <p className='font-semibold'>{nameTag.Value}</p>
+                        </div>
                       </div>
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    <span className='text-sm'>{instance.instanceId}</span>
-                  </TableCell>
-                  <TableCell>
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                      <DemoContainer components={['TimePicker']}>
-                        <div style={{ background: 'white' }}>
-                          <TimePicker
-                            slotProps={{ field: { clearable: true } }}
-                            value={
-                              schedule[instance.instanceId].startDate
-                                ? dayjs(schedule[instance.instanceId].startDate)
-                                : null
-                            }
-                            //   label='Start Time'
-                            onAccept={(value) => {
-                              const newSchedule = Object.assign(
-                                {},
-                                { ...schedule }
-                              );
-                              newSchedule[instance.instanceId].startHour =
-                                value.$H;
-                              newSchedule[instance.instanceId].startMinute =
-                                value.$m;
+                    </TableCell>
+                    <TableCell>
+                      <span className='text-sm'>{instance.instanceId}</span>
+                    </TableCell>
+                    <TableCell>
+                      <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DemoContainer components={['TimePicker']}>
+                          <div style={{ background: 'white' }}>
+                            <TimePicker
+                              slotProps={{ field: { clearable: true } }}
+                              value={
+                                schedule[instance.instanceId].startDate
+                                  ? dayjs(
+                                      schedule[instance.instanceId].startDate
+                                    )
+                                  : null
+                              }
+                              //   label='Start Time'
+                              onAccept={(value) => {
+                                const newSchedule = Object.assign(
+                                  {},
+                                  { ...schedule }
+                                );
+                                newSchedule[instance.instanceId].startHour =
+                                  value.$H;
+                                newSchedule[instance.instanceId].startMinute =
+                                  value.$m;
 
-                              setSchedule(newSchedule);
-                            }}
-                            id={instance.instanceId + '-start-time'}
-                          />
-                        </div>
-                      </DemoContainer>
-                    </LocalizationProvider>
-                  </TableCell>
-                  <TableCell>
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                      <DemoContainer components={['TimePicker']}>
-                        <div style={{ background: 'white' }}>
-                          <TimePicker
-                            slotProps={{ field: { clearable: true } }}
-                            value={
-                              schedule[instance.instanceId].stopDate
-                                ? dayjs(schedule[instance.instanceId].stopDate)
-                                : null
-                            }
-                            onAccept={(value) => {
-                              const newSchedule = Object.assign(
-                                {},
-                                { ...schedule }
-                              );
-                              newSchedule[instance.instanceId].stopHour =
-                                value.$H;
-                              newSchedule[instance.instanceId].stopMinute =
-                                value.$m;
+                                setSchedule(newSchedule);
+                              }}
+                              id={instance.instanceId + '-start-time'}
+                            />
+                          </div>
+                        </DemoContainer>
+                      </LocalizationProvider>
+                    </TableCell>
+                    <TableCell>
+                      <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DemoContainer components={['TimePicker']}>
+                          <div style={{ background: 'white' }}>
+                            <TimePicker
+                              slotProps={{ field: { clearable: true } }}
+                              value={
+                                schedule[instance.instanceId].stopDate
+                                  ? dayjs(
+                                      schedule[instance.instanceId].stopDate
+                                    )
+                                  : null
+                              }
+                              onAccept={(value) => {
+                                const newSchedule = Object.assign(
+                                  {},
+                                  { ...schedule }
+                                );
+                                newSchedule[instance.instanceId].stopHour =
+                                  value.$H;
+                                newSchedule[instance.instanceId].stopMinute =
+                                  value.$m;
 
-                              setSchedule(newSchedule);
-                            }}
-                            id={instance.instanceId + '-stop-time'}
-                          />
-                        </div>
-                      </DemoContainer>
-                    </LocalizationProvider>
-                  </TableCell>
-                  <TableCell>
-                    <div style={{ background: 'white' }}>
-                      <input
-                        type='checkbox'
-                        id={'Sun|' + instance.instanceId}
-                        name='Sun'
-                        value='0'
-                        onClick={handleCheckboxClick}
-                        checked={
-                          schedule[instance.instanceId].dayOfWeek.indexOf(
-                            'Sun'
-                          ) === -1
-                            ? false
-                            : true
-                        }
-                      ></input>
-                      <label for={'Sun|' + instance.instanceId}> Sunday</label>
+                                setSchedule(newSchedule);
+                              }}
+                              id={instance.instanceId + '-stop-time'}
+                            />
+                          </div>
+                        </DemoContainer>
+                      </LocalizationProvider>
+                    </TableCell>
+                    <TableCell>
+                      <div style={{ background: 'white' }}>
+                        <input
+                          type='checkbox'
+                          id={'Sun|' + instance.instanceId}
+                          name='Sun'
+                          value='0'
+                          onClick={handleCheckboxClick}
+                          checked={
+                            schedule[instance.instanceId].dayOfWeek.indexOf(
+                              'Sun'
+                            ) === -1
+                              ? false
+                              : true
+                          }
+                        ></input>
+                        <label for={'Sun|' + instance.instanceId}>
+                          {' '}
+                          Sunday
+                        </label>
+                        <br />
+                        <input
+                          type='checkbox'
+                          id={'Mon|' + instance.instanceId}
+                          name='Mon'
+                          value='1'
+                          onClick={handleCheckboxClick}
+                          checked={
+                            schedule[instance.instanceId].dayOfWeek.indexOf(
+                              'Mon'
+                            ) === -1
+                              ? false
+                              : true
+                          }
+                        ></input>
+                        <label for={'Mon|' + instance.instanceId}>
+                          {' '}
+                          Monday
+                        </label>
+                        <br />
+                        <input
+                          type='checkbox'
+                          id={'Tue|' + instance.instanceId}
+                          name='Tue'
+                          value='2'
+                          onClick={handleCheckboxClick}
+                          checked={
+                            schedule[instance.instanceId].dayOfWeek.indexOf(
+                              'Tue'
+                            ) === -1
+                              ? false
+                              : true
+                          }
+                        ></input>
+                        <label for={'Tue|' + instance.instanceId}>
+                          {' '}
+                          Tuesday
+                        </label>
+                        <br />
+                        <input
+                          type='checkbox'
+                          id={'Wed|' + instance.instanceId}
+                          name='Wed'
+                          value='3'
+                          onClick={handleCheckboxClick}
+                          checked={
+                            schedule[instance.instanceId].dayOfWeek.indexOf(
+                              'Wed'
+                            ) === -1
+                              ? false
+                              : true
+                          }
+                        ></input>
+                        <label for={'Wed|' + instance.instanceId}>
+                          {' '}
+                          Wednesday
+                        </label>
+                        <br />
+                        <input
+                          type='checkbox'
+                          id={'Thu|' + instance.instanceId}
+                          name='Thu'
+                          value='4'
+                          onClick={handleCheckboxClick}
+                          checked={
+                            schedule[instance.instanceId].dayOfWeek.indexOf(
+                              'Thu'
+                            ) === -1
+                              ? false
+                              : true
+                          }
+                        ></input>
+                        <label for={'Thu|' + instance.instanceId}>
+                          {' '}
+                          Thursday
+                        </label>
+                        <br />
+                        <input
+                          type='checkbox'
+                          id={'Fri|' + instance.instanceId}
+                          name='Fri'
+                          value='5'
+                          onClick={handleCheckboxClick}
+                          checked={
+                            schedule[instance.instanceId].dayOfWeek.indexOf(
+                              'Fri'
+                            ) === -1
+                              ? false
+                              : true
+                          }
+                        ></input>
+                        <label for={'Fri|' + instance.instanceId}>
+                          {' '}
+                          Friday
+                        </label>
+                        <br />
+                        <input
+                          type='checkbox'
+                          id={'Sat|' + instance.instanceId}
+                          name='Sat'
+                          value='6'
+                          onClick={handleCheckboxClick}
+                          checked={
+                            schedule[instance.instanceId].dayOfWeek.indexOf(
+                              'Sat'
+                            ) === -1
+                              ? false
+                              : true
+                          }
+                        ></input>
+                        <label for={'Sat|' + instance.instanceId}>
+                          {' '}
+                          Saturday
+                        </label>
+                        <br />
+                      </div>
+                    </TableCell>
+                    <TableCell>
+                      <button
+                        onClick={(e) => {
+                          saveSchedule(e);
+                        }}
+                        id={instance.instanceId + '|save-button'}
+                        className='align-bottom inline-flex items-center justify-center cursor-pointer leading-5 transition-colors duration-150 font-medium focus:outline-none px-4 py-2 rounded-lg text-sm text-templateGray-600 border-templateGreen-700 border dark:text-templateGray-400 focus:outline-none active:bg-transparent hover:border-templateGreen-500 focus:border-templateGreen-500 active:text-templateGray-500 focus:shadow-outline-gray'
+                      >
+                        Save Schedule
+                      </button>
                       <br />
-                      <input
-                        type='checkbox'
-                        id={'Mon|' + instance.instanceId}
-                        name='Mon'
-                        value='1'
-                        onClick={handleCheckboxClick}
-                        checked={
-                          schedule[instance.instanceId].dayOfWeek.indexOf(
-                            'Mon'
-                          ) === -1
-                            ? false
-                            : true
-                        }
-                      ></input>
-                      <label for={'Mon|' + instance.instanceId}> Monday</label>
-                      <br />
-                      <input
-                        type='checkbox'
-                        id={'Tue|' + instance.instanceId}
-                        name='Tue'
-                        value='2'
-                        onClick={handleCheckboxClick}
-                        checked={
-                          schedule[instance.instanceId].dayOfWeek.indexOf(
-                            'Tue'
-                          ) === -1
-                            ? false
-                            : true
-                        }
-                      ></input>
-                      <label for={'Tue|' + instance.instanceId}> Tuesday</label>
-                      <br />
-                      <input
-                        type='checkbox'
-                        id={'Wed|' + instance.instanceId}
-                        name='Wed'
-                        value='3'
-                        onClick={handleCheckboxClick}
-                        checked={
-                          schedule[instance.instanceId].dayOfWeek.indexOf(
-                            'Wed'
-                          ) === -1
-                            ? false
-                            : true
-                        }
-                      ></input>
-                      <label for={'Wed|' + instance.instanceId}>
-                        {' '}
-                        Wednesday
-                      </label>
-                      <br />
-                      <input
-                        type='checkbox'
-                        id={'Thu|' + instance.instanceId}
-                        name='Thu'
-                        value='4'
-                        onClick={handleCheckboxClick}
-                        checked={
-                          schedule[instance.instanceId].dayOfWeek.indexOf(
-                            'Thu'
-                          ) === -1
-                            ? false
-                            : true
-                        }
-                      ></input>
-                      <label for={'Thu|' + instance.instanceId}>
-                        {' '}
-                        Thursday
-                      </label>
-                      <br />
-                      <input
-                        type='checkbox'
-                        id={'Fri|' + instance.instanceId}
-                        name='Fri'
-                        value='5'
-                        onClick={handleCheckboxClick}
-                        checked={
-                          schedule[instance.instanceId].dayOfWeek.indexOf(
-                            'Fri'
-                          ) === -1
-                            ? false
-                            : true
-                        }
-                      ></input>
-                      <label for={'Fri|' + instance.instanceId}> Friday</label>
-                      <br />
-                      <input
-                        type='checkbox'
-                        id={'Sat|' + instance.instanceId}
-                        name='Sat'
-                        value='6'
-                        onClick={handleCheckboxClick}
-                        checked={
-                          schedule[instance.instanceId].dayOfWeek.indexOf(
-                            'Sat'
-                          ) === -1
-                            ? false
-                            : true
-                        }
-                      ></input>
-                      <label for={'Sat|' + instance.instanceId}>
-                        {' '}
-                        Saturday
-                      </label>
-                      <br />
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    <button
-                      onClick={(e) => {
-                        saveSchedule(e);
-                      }}
-                      id={instance.instanceId + '|save-button'}
-                      className='align-bottom inline-flex items-center justify-center cursor-pointer leading-5 transition-colors duration-150 font-medium focus:outline-none px-4 py-2 rounded-lg text-sm text-templateGray-600 border-templateGreen-700 border dark:text-templateGray-400 focus:outline-none active:bg-transparent hover:border-templateGreen-500 focus:border-templateGreen-500 active:text-templateGray-500 focus:shadow-outline-gray'
-                    >
-                      Save Schedule
-                    </button>
-                    <br />
-                    <button
-                      onClick={(e) => {
-                        deleteSchedule(e);
-                      }}
-                      id={instance.instanceId + '|clear-button'}
-                      className='align-bottom inline-flex items-center justify-center cursor-pointer leading-5 transition-colors duration-150 font-medium focus:outline-none px-4 py-2 rounded-lg text-sm text-templateGray-600 border-templateRed-700 border dark:text-templateGray-400 focus:outline-none active:bg-transparent hover:border-templateRed-500 focus:border-templateRed-500 active:text-templateRed-500 focus:shadow-outline-red'
-                    >
-                      Clear Schedule
-                    </button>
-                  </TableCell>
-                </TableRow>
-              );
-            }
-          })}
-        </TableBody>
-      </Table>
-    </TableContainer>
+                      <button
+                        onClick={(e) => {
+                          deleteSchedule(e);
+                        }}
+                        id={instance.instanceId + '|clear-button'}
+                        className='align-bottom inline-flex items-center justify-center cursor-pointer leading-5 transition-colors duration-150 font-medium focus:outline-none px-4 py-2 rounded-lg text-sm text-templateGray-600 border-templateRed-700 border dark:text-templateGray-400 focus:outline-none active:bg-transparent hover:border-templateRed-500 focus:border-templateRed-500 active:text-templateRed-500 focus:shadow-outline-red'
+                      >
+                        Clear Schedule
+                      </button>
+                    </TableCell>
+                  </TableRow>
+                );
+              }
+            })}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
   );
 }
 
