@@ -80,10 +80,10 @@ function Tables({ instanceList }) {
 
   return (
     <>
-      <div className='w-full'>
+      <div className='w-full overflow-auto'>
         <div
           id='Table'
-          className='w-full overflow-hidden rounded-lg shadow-xs mb-8'
+          className='w-full overflow-auto rounded-lg shadow-xs mb-8'
         >
           <TableContainer className='mb-8 dark:bg-templateGray-800'>
             <Table>
