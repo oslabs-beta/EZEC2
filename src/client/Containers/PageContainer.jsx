@@ -6,6 +6,7 @@ import PageTabs from '../Components/PageTabs';
 import OverviewMetricsPage from '../Pages/OverviewMetricsPage';
 import OverviewManagementPage from '../Pages/OverviewManagementPage';
 import InstanceMetricsPage from '../Pages/InstanceMetricsPage';
+import OverViewSchedulerPage from '../Pages/OverviewSchedulerPage';
 
 // tabs
 // different pages
@@ -28,6 +29,10 @@ const PageContainer = () => {
         <Route
           path='/instance/usage-metrics'
           element={<InstanceMetricsPage />}
+        ></Route>
+        <Route
+          path='/overview/scheduler'
+          element={<OverViewSchedulerPage />}
         ></Route>
       </Routes>
     </>
