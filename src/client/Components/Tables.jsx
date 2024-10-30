@@ -39,6 +39,7 @@ const buttonStyles = {
 
 function Tables({ instanceList }) {
   const { search } = useContext(SearchBarContext);
+
   function handleStop(instanceIds) {
     if (!Array.isArray(instanceIds)) {
       instanceIds = [instanceIds];
@@ -79,10 +80,10 @@ function Tables({ instanceList }) {
 
   return (
     <>
-      <div className='w-full'>
+      <div className='w-full overflow-auto'>
         <div
           id='Table'
-          className='w-full overflow-hidden rounded-lg shadow-xs mb-8'
+          className='w-full overflow-auto rounded-lg shadow-xs mb-8'
         >
           <TableContainer className='mb-8 dark:bg-templateGray-800'>
             <Table>
@@ -90,6 +91,7 @@ function Tables({ instanceList }) {
                 <tr className='text-xs font-semibold tracking-wide text-left text-templateGray-500 uppercase border-b bg-templateGray-50 dark:border-templateGray-600 dark:text-templateGray-400 dark:bg-templateGray-800'>
                   <TableCell>Instance</TableCell>
                   <TableCell>ID</TableCell>
+                  <TableCell>Security Groups</TableCell>
                   <TableCell>Status</TableCell>
                   <TableCell>Action</TableCell>
                 </tr>
@@ -106,7 +108,12 @@ function Tables({ instanceList }) {
                     ) ||
                     instance.instanceId
                       .toUpperCase()
-                      .includes(search.toUpperCase())
+                      .includes(search.toUpperCase()) ||
+                    instance.securityGroups.some((group) =>
+                      group.GroupName.toUpperCase().includes(
+                        search.toUpperCase()
+                      )
+                    )
                   ) {
                     return (
                       <TableRow key={i}>
@@ -119,6 +126,15 @@ function Tables({ instanceList }) {
                         </TableCell>
                         <TableCell>
                           <span className='text-sm'>{instance.instanceId}</span>
+                        </TableCell>
+                        <TableCell>
+                          {instance.securityGroups.map((group, i) => {
+                            if (i === instance.securityGroups.length - 1) {
+                              return <span>{group.GroupName}</span>;
+                            } else {
+                              return <span>{group.GroupName}, </span>;
+                            }
+                          })}
                         </TableCell>
                         <TableCell>
                           <span className={badgeStyles[instance.state.Name]}>

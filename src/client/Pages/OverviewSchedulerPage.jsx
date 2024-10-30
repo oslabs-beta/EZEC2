@@ -22,7 +22,7 @@ const OverViewSchedulerPage = () => {
     if (!instanceDetails) fetchDetails();
   }, [instanceDetails]);
   return (
-    <div>
+    <div className='w-full overflow-auto'>
       <h1 className='my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200 px-6'>
         Instance Scheduler
       </h1>

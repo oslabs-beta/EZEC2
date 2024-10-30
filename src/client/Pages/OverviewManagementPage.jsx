@@ -15,7 +15,7 @@ const OverviewManagementPage = () => {
       <h1 className='my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200 px-6'>
         Control Panel
       </h1>
-      <div className='flex px-6 flex-col'>
+      <div className='flex px-6 flex-col overflow-auto'>
         <OverviewManagement />
         {instanceDetails && <Tables instanceList={instanceDetails} />}
       </div>
