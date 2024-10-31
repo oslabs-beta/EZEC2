@@ -143,7 +143,8 @@ function Tables({ instanceList }) {
                         </TableCell>
                         <TableCell>
                           {instance.state.Name !== 'shutting-down' &&
-                            instance.state.Name !== 'terminated' && (
+                            instance.state.Name !== 'terminated' &&
+                            !instance.managerInstance && (
                               <button
                                 className={buttonStyles[instance.state.Name]}
                                 onClick={

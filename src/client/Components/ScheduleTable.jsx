@@ -35,7 +35,6 @@ function ScheduleTable({ instanceList }) {
   });
 
   const [schedule, setSchedule] = useState(initialSchedule);
-  //   const [savedSchedule, setSavedSchedule] = useState('') -- for rerendering upon schedule clear
 
   const { isPending, error, data, refetch } = useQuery({
     queryKey: ['scheduleData'],
@@ -235,6 +234,8 @@ function ScheduleTable({ instanceList }) {
           <TableBody className='dark:bg-templateGray-800 divide-y dark:divide-templateGray-700 text-templateGray-700 dark:text-templateGray-400 dark:border-templateGray-700'>
             {instanceList.map((instance, i) => {
               const nameTag = instance.tags.find((tag) => tag.Key === 'Name');
+              // this prevents users from scheduling a shut down of the instance managing other instances
+              if (instance.managerInstance) return;
               if (
                 nameTag?.Value?.toUpperCase().includes(search.toUpperCase()) ||
                 instance.instanceId.toUpperCase().includes(search.toUpperCase())
