@@ -91,7 +91,6 @@ const UsageMetricsLineChart = ({ instanceId }) => {
 
     charts.push(
       <div key={metricResult.Id} className='mb-6'>
-        <h3 className='text-lg font-semibold mb-2'>{config.label}</h3>
         <LineChart
           className='bg-opacity-70 bg-white rounded-md'
           height={300}

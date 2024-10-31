@@ -1,16 +1,18 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
+import logo from '../assets/images/logo-purple.png'
+
 const SideBarContent = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
   return (
     <div className='py-4 text-templateGray-500 dark:text-templateGray-400'>
-      <a className='ml-6 text-lg font-bold text-templateGray-800 dark:text-templateGray-200'>
+      <img src={logo} className='w-3/4 px-6'></img>
+      {/* <a className='ml-6 text-lg font-bold text-templateGray-800 dark:text-templateGray-200'>
         EZEC2
-        {/* ~Danny placeholder~ */}
-      </a>
+      </a> */}
       <ul className='mt-6'>
         {/* Should swap to component here: */}
         <li className='relative px-6 py-3'>

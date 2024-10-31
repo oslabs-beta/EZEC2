@@ -31,6 +31,10 @@ module.exports = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        type: 'asset/resource',
+      },
     ],
   },
   devServer: {
@@ -50,6 +54,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/client/index.html',
+      favicon: './src/client/assets/images/logo-p.png'
     }),
   ],
   resolve: {
