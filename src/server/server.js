@@ -24,7 +24,6 @@ app.use('/cloudwatch', cloudwatchRouter);
 app.use('/scheduler', schedulerRouter);
 
 app.use('*', (req, res) => {
-  console.log('hitting 404 message');
   return res.sendStatus(404);
 });
 

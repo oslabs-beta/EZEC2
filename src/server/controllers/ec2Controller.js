@@ -3,14 +3,12 @@ const dotenv = require('dotenv').config();
 
 const ec2Controller = {};
 ec2Controller.getInstanceDetails = async (req, res, next) => {
-  console.log('Getting all instance details.');
   try {
     const instanceDetails = await ec2Commands.getInstanceDetails();
     res.status(instanceDetails.status);
     res.locals.instanceList = instanceDetails.instanceList;
 
     res.locals.instanceList.forEach((instance) => {
-      console.log(instance);
       if (instance.instanceId === process.env.MANAGER_INSTANCE_ID) {
         instance['managerInstance'] = true;
       } else {
@@ -38,7 +36,6 @@ ec2Controller.stopInstance = async (req, res, next) => {
     }
 
     const stopResponse = await ec2Commands.stopInstance(req.body.instanceIds);
-    console.log(stopResponse);
 
     res.status(stopResponse.$metadata.httpStatusCode);
     res.locals.stopResponse = stopResponse;
