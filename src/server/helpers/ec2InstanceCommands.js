@@ -1,6 +1,7 @@
 const aws = require('@aws-sdk/client-ec2');
+const dotenv = require('dotenv').config();
 const client = new aws.EC2Client({
-  region: 'us-east-1',
+  region: process.env.AWS_REGION,
 });
 
 const ec2Commands = {};
@@ -14,7 +15,6 @@ ec2Commands.stopInstance = async (instanceIds) => {
   });
 
   const stopResponse = await client.send(command);
-  console.log(stopResponse);
   return stopResponse;
 };
 
@@ -26,7 +26,6 @@ ec2Commands.startInstance = async (instanceIds) => {
     });
 
     const startResponse = await client.send(startCommand);
-    console.log(startResponse);
     return startResponse;
   } catch (e) {
     console.log(e);

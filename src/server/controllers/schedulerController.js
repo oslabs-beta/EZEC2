@@ -34,7 +34,7 @@ const scheduleSavedJobsOnce = runOnce((jobs) => {
         };
         break;
       default:
-        console.log('Unrecognized case');
+        console.log('Error: Unrecognized case');
         return;
     }
     const job = cron.schedule(cronExpression, cronFunction);
@@ -71,7 +71,6 @@ function parseCronExpression(req) {
   } else {
     expression += '*';
   }
-  console.log(expression);
   return expression;
 }
 
