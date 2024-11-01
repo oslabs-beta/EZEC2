@@ -25,3 +25,16 @@ Scheduling functionality will persist via connection to a MongoDB Database.
 - Set the .env variable for your MONGO_URI
 - Set the .env variable for your MANAGER_INSTANCE_ID - this will ensure you cannot stop the EC2 instance that's hosting EZEC2
 - Ensure the security policy for the host instance limits access to your host instance. EZEC2 will allow someone to start/stop all of your EC2 resources.
+
+## Continued Development
+
+### Future Features and Goals
+
+- Converting the codebase to Typescript
+- Adding testing
+- Containerizing the application
+- Tracking EC2 instance costs and stopping EC2 instances if they go over budget automatically
+- Increasing the amount of different instance metrics the user can request to view
+- The ability to filter displayed metrics by metric type and time period
+- Add the ability to export data
+- Automaitcally stopping instances when certain user set conditions are met
